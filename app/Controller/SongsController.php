@@ -2,17 +2,15 @@
 class SongsController extends AppController {
 
 	public $components = array('Search.Prg');
-	public $presetVars = true;
 
 	public function index() {
-		if ($this->request->is('post')) {
+		if ($this->request->is('get')) {
 			$this->Prg->commonProcess();
-			// $this->paginate = array(
-			// 	'conditions' => $this->Song->parseCriteria($this->passedArgs)
-			// );
+			$this->paginate = array(
+				'conditions' => $this->Song->parseCriteria($this->passedArgs),
+			);
+			$this->set('songs', $this->paginate());
 		}
-		$this->set('songs', $this->paginate());
-		$this->render('index');
 	}
 
 }

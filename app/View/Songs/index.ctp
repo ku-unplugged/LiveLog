@@ -1,7 +1,8 @@
 <div class="page-header">
 	<h1>Song Search</h1>
 </div>
-<?php echo $this->Form->create('Search', array(
+<?php echo $this->Form->create('Song', array(
+	'type' => 'get',
 	'inputDefaults' => array(
 		'div' => 'form-group',
 		'label' => false,
@@ -10,8 +11,8 @@
 	),
 	'class' => 'form-inline well'
 )); ?>
-	<?php echo $this->Form->input('Song.name', array('placeholder' => 'Song')); ?>
-	<?php echo $this->Form->input('Song.artist', array('placeholder' => 'Artist')); ?>
+	<?php echo $this->Form->input('artist', array('placeholder' => 'Artist')); ?>
+	<?php echo $this->Form->input('name', array('placeholder' => 'Song')); ?>
 	<?php echo $this->Form->submit('Search', array(
 		'div' => 'form-group',
 		'class' => 'btn btn-default'
@@ -22,6 +23,7 @@
 		<tr>
 			<th><?php echo $this->Paginator->sort('Live.date', 'Date') ?></th>
 			<th>Live</th>
+			<th>Order</th>
 			<th>Song</th>
 			<th>Artist</th>
 			<th>Members</th>
@@ -32,6 +34,7 @@
 		<tr>
 			<td><?php echo h($song['Live']['date']); ?></td>
 			<td><?php echo h($song['Live']['name']); ?></td>
+			<td><?php echo h($song['Song']['order']); ?></td>
 			<td><?php echo h($song['Song']['name']); ?></td>
 			<td><?php echo h($song['Song']['artist']); ?></td>
 			<td>
