@@ -7,4 +7,11 @@ class Song extends AppModel {
 
 	public $hasAndBelongsToMany = array('Member');
 
+	public $actAs = array('Search.Searchable');
+
+	public $filterArgs = array(
+		'Song.name' => array('type' => 'like'),
+		'Song.artist' => array('type' => 'like')
+	);
+
 }
