@@ -1,7 +1,7 @@
 <?php
 class LivesController extends AppController {
 
-	public $uses = array('Live');  // 指定しなければ Life になる
+	public $uses = array('Live', 'Song');  // 指定しなければ Life になる
 
 	public function index() {
 		// livesテーブルから今日以前のライブのレコードを取得
