@@ -13,7 +13,7 @@
 		<?php foreach($lives as $row): ?>
 		<tr>
 			<td><?php echo $this->element('time', array('date' => $row['Live']['date'])); ?></td>
-			<td><?php echo h($row['Live']['name']); ?></td>
+			<td><?php echo $this->Html->link($row['Live']['name'], '/Lives/detail/'.$row['Live']['id']); ?></td>
 			<td><?php echo h($row['Live']['place']); ?></td>
 		</tr>
 		<?php endforeach; ?>
