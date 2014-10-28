@@ -7,7 +7,7 @@ class LivesController extends AppController {
 		// livesテーブルを取得
 		$options = array('recursive' => 0);
 		$lives = $this->Live->find('all', $options);
-		debug($lives);
+		// debug($lives);
 		$this->set('lives', $lives);
 		$this->render('index');
 	}
