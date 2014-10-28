@@ -1,4 +1,6 @@
 <?php
-class User extends AppModel {
+class Member extends AppModel {
+
+	public $order = 'Member.frigana';
 
 }

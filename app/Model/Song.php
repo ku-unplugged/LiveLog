@@ -2,9 +2,9 @@
 class Song extends AppModel {
 
 	public $belongsTo = array('Live' => array(
-		'foreignKey' => 'live_id'
+		'foreignKey' => 'live_id' // 指定しなければ life_id になる
 	));
 
-	public $hasAndBelonsToMany = array('Member');
+	public $hasAndBelongsToMany = array('Member');
 
 }
