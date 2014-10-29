@@ -53,7 +53,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">LiveLog</a>
+			<?php echo $this->Html->link('LiveLog', '/', array('class' => 'navbar-brand')); ?>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->

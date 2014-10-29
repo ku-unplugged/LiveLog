@@ -1,3 +1,6 @@
+<?php
+$this->assign('title', 'Song Search');
+?>
 <div class="page-header">
 	<h1>Song Search</h1>
 </div>

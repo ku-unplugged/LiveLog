@@ -1,3 +1,6 @@
+<?php
+$this->assign('title', 'Home');
+?>
 <div class="jumbotron">
 	<h1>LiveLog</h1>
 	<p>

@@ -1,3 +1,6 @@
+<?php
+$this->assign('title', 'Live List');
+?>
 <div class="page-header">
 	<h1>Live List</h1>
 </div>
