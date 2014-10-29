@@ -71,7 +71,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				</li>
 			</ul>
 			<?php echo $this->Html->link(
-				'<button type="button" class="btn btn-info navbar-btn navbar-right">Sign Out</button>',
+				'<button type="button" class="btn btn-link navbar-btn navbar-right">Sign Out</button>',
 				'/members/logout',
 				array('escape' => false)
 			); ?>
