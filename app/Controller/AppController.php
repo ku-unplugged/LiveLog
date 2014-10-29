@@ -66,10 +66,4 @@ class AppController extends Controller {
         'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
     );
 
-    public function beforeFilter() {
-        $this->Auth->allow(array('controller' => 'pages', 'action' => 'display', 'index'));
-        $this->Auth->allow('index');
-    }
-
-
 }

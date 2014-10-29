@@ -5,7 +5,7 @@ class LivesController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('detail');
+		$this->Auth->allow('index', 'detail');
 	}
 
 	public function index() {

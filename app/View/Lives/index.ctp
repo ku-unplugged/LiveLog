@@ -13,10 +13,10 @@ $this->assign('title', 'Live List');
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach($lives as $live): ?>
+		<?php foreach ($lives as $live): ?>
 		<tr>
 			<td><?php echo $this->element('time', array('date' => $live['Live']['date'])); ?></td>
-			<td><?php echo $this->Html->link($live['Live']['name'], '/Lives/detail/'.$live['Live']['id']); ?></td>
+			<td><?php echo $this->Html->link($live['Live']['name'], '/lives/detail/'.$live['Live']['id']); ?></td>
 			<td><?php echo h($live['Live']['place']); ?></td>
 		</tr>
 		<?php endforeach; ?>

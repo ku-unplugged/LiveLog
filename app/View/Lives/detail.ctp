@@ -10,7 +10,7 @@ $this->assign('title', h($songs[0]['Live']['name'].' '.date('Y', strtotime($song
 	</h1>
 </div>
 <ol>
-	<?php foreach($songs as $song): ?>
+	<?php foreach ($songs as $song): ?>
 	<li>
 		<?php echo h($song['Song']['name']) . ' / ' . h($song['Song']['artist']); ?>
 		<?php echo $this->element('members', array('members' => $song['Member'])); ?>

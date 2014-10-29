@@ -59,8 +59,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><?php echo $this->Html->link('Song Search', '/Songs/'); ?></li>
-				<li><?php echo $this->Html->link('Live List', '/Lives/'); ?></li>
+				<li><?php echo $this->Html->link('Song Search', '/songs/'); ?></li>
+				<li><?php echo $this->Html->link('Live List', '/lives/'); ?></li>
 			</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container -->
@@ -68,6 +68,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<div class="container">
 		<section>
 			<?php echo $this->Session->flash(); ?>
+			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $this->fetch('content'); ?>
 		</section>
 		<footer>
