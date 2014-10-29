@@ -26,7 +26,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->meta(array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1'));
 	?>
 	<title>
-		<?php echo $this->fetch('title'); ?> - 京大アンプラグド LiveLog
+		<?php echo $this->fetch('title'); ?> - LiveLog
 	</title>
 	<?php
 		echo $this->Html->meta('icon');

@@ -11,7 +11,7 @@
 	),
 	'class' => 'form-inline well'
 )); ?>
-	<?php echo $this->Form->input('song_name', array('placeholder' => 'Song')); ?>
+	<?php echo $this->Form->input('sname', array('placeholder' => 'Song')); ?>
 	<?php echo $this->Form->input('artist', array('placeholder' => 'Artist')); ?>
 	<?php echo $this->Form->submit('Search', array(
 		'div' => 'form-group',
