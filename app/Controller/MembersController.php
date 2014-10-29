@@ -3,7 +3,7 @@ class MembersController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('confirm', 'register');
+		$this->Auth->allow('confirm', 'register', 'login');
 	}
 
 	public function index() {
@@ -21,7 +21,7 @@ class MembersController extends AppController {
 			);
 			$member = $this->Member->find('first', $options);
 			if (empty($member)) {
-				$this->Session->setFlash('該当するメンバー情報がありません', 'alert', array(
+				$this->Session->setFlash('<strong>該当するメンバー情報がありません。</strong>', 'alert', array(
 					'plugin' => 'BoostCake',
 					'class' => 'alert-danger'
 				));
@@ -31,8 +31,8 @@ class MembersController extends AppController {
 					$this->redirect(array('action' => 'register'));
 				} else {
 					$this->Session->setFlash(
-						'すでに登録済みです。メールアドレスとパスワードを入力してログインしてください<br>
-						メールアドレス・パスワードを忘れた，あるいは登録に心当りがない方は，お手数ですが管理者までご連絡ください',
+						'<strong>すでに登録済みです。</strong>メールアドレスとパスワードを入力してログインしてください。<br>
+						メールアドレス・パスワードを忘れた，あるいは登録に心当りがない方は，お手数ですが管理者までご連絡ください。',
 						'alert',
 						array(
 							'plugin' => 'BoostCake',
@@ -54,15 +54,13 @@ class MembersController extends AppController {
 					'password' => $this->request->data['Register']['password']
 				));
 				if ($this->Member->save($data)) {
-					$this->Session->destroy();
-					$this->Session->setFlash('登録が完了しました', 'alert', array(
+					$this->Session->setFlash('<strong>登録が完了しました。</strong>', 'alert', array(
 						'plugin' => 'BoostCake',
 						'class' => 'alert-success'
 					));
 					$this->redirect(array('action' => 'login'));
 				} else {
-					$this->Session->destroy();
-					$this->Session->setFlash('登録に失敗しました。恐れ入りますがもう一度やり直してください', 'alert', array(
+					$this->Session->setFlash('<strong>登録に失敗しました。</strong>恐れ入りますがもう一度やり直してください。', 'alert', array(
 						'plugin' => 'BoostCake',
 						'class' => 'alert-danger'
 					));
