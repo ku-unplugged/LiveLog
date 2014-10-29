@@ -31,7 +31,7 @@ class MembersController extends AppController {
 					$this->redirect(array('action' => 'register'));
 				} else {
 					$this->Session->setFlash(
-						'<strong>すでに登録済みです。</strong>メールアドレスとパスワードを入力してログインしてください。<br>
+						'<strong>すでに登録済みです。</strong>メールアドレスとパスワードを入力してサインインしてください。<br>
 						メールアドレス・パスワードを忘れた，あるいは登録に心当りがない方は，お手数ですが管理者までご連絡ください。',
 						'alert',
 						array(
@@ -54,7 +54,7 @@ class MembersController extends AppController {
 					'password' => $this->request->data['Register']['password']
 				));
 				if ($this->Member->save($data)) {
-					$this->Session->setFlash('<strong>登録が完了しました。</strong>', 'alert', array(
+					$this->Session->setFlash('<strong>登録が完了しました。</strong>メールアドレスとパスワードを入力してサインインしてください。', 'alert', array(
 						'plugin' => 'BoostCake',
 						'class' => 'alert-success'
 					));
@@ -75,7 +75,16 @@ class MembersController extends AppController {
 	}
 
 	public function login() {
-
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				return $this->redirect($this->Auth->redirectUrl());
+			} else {
+				$this->Session->setFlash('<strong>メールアドレスまたはパスワードが正しくありません。</strong>', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-danger'
+				));
+			}
+		}
 	}
 
 }

@@ -51,7 +51,7 @@ class AppController extends Controller {
                 'key' => 'auth',
                 'params' => array(
                     'plugin' => 'BoostCake',
-                    'class' => 'alert-error'
+                    'class' => 'alert-warning'
                 )
             ),
             'loginRedirect' => array('controller' => 'songs', 'action' => 'index'),
