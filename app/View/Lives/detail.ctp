@@ -7,14 +7,10 @@
 	</h1>
 </div>
 <ol>
-	<?php foreach($songs as $list): ?>
+	<?php foreach($songs as $song): ?>
 	<li>
-		<?php echo h($list['Song']['name']) . ' / ' . h($list['Song']['artist']); ?>
-		<ul class="list-inline">
-			<?php foreach($list['Member'] as $member): ?>
-				<li><?php echo h($member['MembersSong']['instrument']) . '.' . h($member['last_name']); ?></li>
-			<?php endforeach; ?>
-		</ul>
+		<?php echo h($song['Song']['name']) . ' / ' . h($song['Song']['artist']); ?>
+		<?php echo $this->element('members', array('members' => $song['Member'])); ?>
 	</li>
 	<?php endforeach; ?>
 </ol>

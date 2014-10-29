@@ -16,7 +16,6 @@ class LivesController extends AppController {
 
 		// データを渡してindexビューを表示
 		$this->set('lives', $lives);
-		$this->render('index');
 	}
 
 	public function detail() {
@@ -37,7 +36,6 @@ class LivesController extends AppController {
 
 		// データを渡してdetailビューを表示
 		$this->set('songs', $songs);
-		$this->render('detail');
 	}
 
 }

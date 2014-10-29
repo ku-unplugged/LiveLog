@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1>過去のセットリスト</h1>
+	<h1>Live List</h1>
 </div>
 <table class="table table-hover">
 	<thead>
@@ -10,11 +10,11 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach($lives as $row): ?>
+		<?php foreach($lives as $live): ?>
 		<tr>
-			<td><?php echo $this->element('time', array('date' => $row['Live']['date'])); ?></td>
-			<td><?php echo $this->Html->link($row['Live']['name'], '/Lives/detail/'.$row['Live']['id']); ?></td>
-			<td><?php echo h($row['Live']['place']); ?></td>
+			<td><?php echo $this->element('time', array('date' => $live['Live']['date'])); ?></td>
+			<td><?php echo $this->Html->link($live['Live']['name'], '/Lives/detail/'.$live['Live']['id']); ?></td>
+			<td><?php echo h($live['Live']['place']); ?></td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>
