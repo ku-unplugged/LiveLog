@@ -71,7 +71,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->fetch('content'); ?>
 		</section>
 		<footer>
-			<p class="text-center"><small>Copyright &copy; <?php echo date('Y'); ?> 京大アンプラグド All Rights Reserved</small></p>
+			<p class="text-center"><small>&copy; 2014 <?php echo $this->Html->link('京大アンプラグド', 'http://ku-unplugged.net/', array('target' => '_blank')); ?></small></p>
 		</footer>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
