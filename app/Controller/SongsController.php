@@ -8,6 +8,11 @@ class SongsController extends AppController {
 			$this->Prg->commonProcess();
 			$this->paginate = array(
 				'conditions' => $this->Song->parseCriteria($this->passedArgs),
+				'limit' => 20,
+				'order' => array(
+					'Live.date' => 'DESC',
+					'Song.order' => 'ASC'
+				)
 			);
 			$this->set('songs', $this->paginate());
 		}

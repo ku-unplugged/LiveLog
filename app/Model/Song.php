@@ -10,8 +10,8 @@ class Song extends AppModel {
 	public $hasAndBelongsToMany = array('Member');
 
 	public $filterArgs = array(
-		'name' => array('type' => 'like', 'field' => 'name'),
-		'artist' => array('type' => 'like', 'field' => 'article')
+		'song_name' => array('type' => 'like', 'field' => 'name'),
+		'artist' => array('type' => 'like', 'field' => 'artist')
 	);
 
 }
