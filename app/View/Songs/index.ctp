@@ -1,3 +1,6 @@
+<?php
+$this->assign('title', 'Song Search');
+?>
 <div class="page-header">
 	<h1>Song Search</h1>
 </div>
@@ -11,7 +14,7 @@
 	),
 	'class' => 'form-inline well'
 )); ?>
-	<?php echo $this->Form->input('song_name', array('placeholder' => 'Song')); ?>
+	<?php echo $this->Form->input('sname', array('placeholder' => 'Song')); ?>
 	<?php echo $this->Form->input('artist', array('placeholder' => 'Artist')); ?>
 	<?php echo $this->Form->submit('Search', array(
 		'div' => 'form-group',

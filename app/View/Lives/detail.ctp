@@ -1,3 +1,6 @@
+<?php
+$this->assign('title', h($songs[0]['Live']['name'].' '.date('Y', strtotime($songs[0]['Live']['date']))));
+?>
 <div class="page-header">
 	<h1>
 		<?php echo h($songs[0]['Live']['name']); ?>
