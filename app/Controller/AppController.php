@@ -46,21 +46,30 @@ class AppController extends Controller {
                     'fields' => array('username' => 'email')
                 )
             ),
-			'flash' => array(
-				'element' => 'alert',
-				'key' => 'auth',
-				'params' => array(
-					'plugin' => 'BoostCake',
-					'class' => 'alert-error'
-				)
-			)
-		));
+            'flash' => array(
+                'element' => 'alert',
+                'key' => 'auth',
+                'params' => array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-error'
+                )
+            ),
+            'loginRedirect' => array('controller' => 'songs', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'index')
+        )
+    );
 
     public $helpers = array(
-		'Session',
-		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
-		'Form' => array('className' => 'BoostCake.BoostCakeForm'),
-		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
-	);
+        'Session',
+        'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+        'Form' => array('className' => 'BoostCake.BoostCakeForm'),
+        'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+    );
+
+    public function beforeFilter() {
+        $this->Auth->allow(array('controller' => 'pages', 'action' => 'display', 'index'));
+        $this->Auth->allow('index');
+    }
+
 
 }

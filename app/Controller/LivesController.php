@@ -3,6 +3,11 @@ class LivesController extends AppController {
 
 	public $uses = array('Live', 'Song');  // 指定しなければ Life になる
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('detail');
+	}
+
 	public function index() {
 		// livesテーブルから今日以前のライブのレコードを取得
 		$options = array(
