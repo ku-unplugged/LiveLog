@@ -59,15 +59,30 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><?php echo $this->Html->link('Song Search', '/songs'); ?></li>
-				<li><?php echo $this->Html->link('Live List', '/lives'); ?></li>
+				<li<?php echo $this->request->controller === 'songs' ? ' class="active"' : '' ?>>
+					<?php echo $this->Html->link('Song Search', '/songs'); ?>
+				</li>
+				<li<?php echo $this->request->controller === 'lives' ? ' class="active"' : '' ?>>
+					<?php echo $this->Html->link('Live List', '/lives'); ?>
+				</li>
+			<?php if (isset($auth)): // ログインしていれば ?>
+				<li<?php echo $this->request->controller === 'members' ? ' class="active"' : '' ?>>
+					<?php echo $this->Html->link('Members', '/members'); ?>
+				</li>
+			</ul>
+			<?php echo $this->Html->link(
+				'<button type="button" class="btn btn-info navbar-btn navbar-right">Sign Out</button>',
+				'/members/logout',
+				array('escape' => false)
+			); ?>
+			<?php else: // ログインしていなければ ?>
 			</ul>
 			<?php echo $this->Html->link(
 				'<button type="button" class="btn btn-info navbar-btn navbar-right" style="margin-left:15px">Sign Up</button>',
 				'/members/confirm',
 				array('escape' => false)
 			); ?>
-			<?php echo $this->Form->create(array(
+			<?php echo $this->Form->create('Members', array(
 				'url' => array(
 					'controller' => 'members',
 					'action' => 'login'
@@ -91,6 +106,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				'class' => 'btn btn-default'
 			)); ?>
 			<?php echo $this->Form->end(); ?>
+			<?php endif; ?>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container -->
 	</nav>
