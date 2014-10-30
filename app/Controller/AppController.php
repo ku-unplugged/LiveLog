@@ -33,8 +33,8 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
     public $components = array(
-        'DebugKit.Toolbar' => array(),
-        'Session' => array(),
+        'DebugKit.Toolbar',
+        'Session',
         'Auth' => array(
             'loginAction' => array(
                 'controller' => 'members',
@@ -68,6 +68,21 @@ class AppController extends Controller {
 
     public function beforeFilter() {
         $this->set('auth', $this->Auth->user());
+    }
+
+    public function isAuthorized($user = null) {
+        // 登録済みユーザなら誰でも公開 function にアクセス可能
+        if (empty($this->request->params['admin'])) {
+            return true;
+        }
+
+        // adminユーザだけが管理 functions にアクセス可能
+        if (isset($this->request->params['admin'])) {
+            return (bool)($user['admin'] === '1');
+        }
+
+        // デフォルトは拒否
+        return false;
     }
 
 }

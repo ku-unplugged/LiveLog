@@ -12,13 +12,23 @@ class Member extends AppModel {
 	public $validate = array(
 		'email' => array(
 			'rule'		=> array('email'),
-			'required'	=> true,
 			'message'	=> '有効なメールアドレスを入力してください。'
 		),
 		'password' => array(
-			'rule'		=> array('minLength', '4'),
-			'required'	=> true,
-			'message'	=> '4文字以上のパスワードを設定してください。'
+			'rule'		=> array('notEmpty'),
+			'message'	=> 'パスワードを設定してください。'
+		),
+		'year' => array(
+			'rule'		=> array('date', 'y')
+		),
+		'last_name' => array(
+			'rule'		=> array('notEmpty')
+		),
+		'first_name' => array(
+			'rule'		=> array('notEmpty')
+		),
+		'furigana' => array(
+			'rule'		=> array('notEmpty')
 		)
 	);
 

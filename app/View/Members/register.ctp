@@ -23,7 +23,7 @@ $this->assign('title', 'Sign Up');
 		'placeholder' => 'メールアドレス'
 	)); ?>
 	<?php echo $this->Form->input('password', array(
-		'placeholder' => '4文字以上のパスワード'
+		'placeholder' => 'パスワード'
 	)); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('Sign Up', array(
