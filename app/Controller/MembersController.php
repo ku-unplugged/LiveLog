@@ -64,7 +64,7 @@ class MembersController extends AppController {
 			if (empty($member)) {
 				$this->Session->setFlash('<strong>該当するメンバー情報がありません。</strong>', 'alert', array(
 					'plugin' => 'BoostCake',
-					'class' => 'alert-danger'
+					'class' => 'alert-warning'
 				));
 			} else {
 				if (is_null($member['Member']['email'])) {
@@ -122,14 +122,36 @@ class MembersController extends AppController {
 			} else {
 				$this->Session->setFlash('<strong>メールアドレスまたはパスワードが正しくありません。</strong>', 'alert', array(
 					'plugin' => 'BoostCake',
-					'class' => 'alert-danger'
+					'class' => 'alert-warning'
 				));
 			}
 		}
 	}
 
+	public function admin_login() {
+		$this->login();
+	}
+
 	public function logout() {
 		$this->redirect($this->Auth->logout());
+	}
+
+	public function admin_add() {
+		if ($this->request->is('post')) {
+			$data = $this->request->data;
+			if ($this->Member->save($data)) {
+				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Member->id . '）', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-success'
+				));
+				$this->request->data = array();
+			} else {
+				$this->Session->setFlash('<strong>追加に失敗しました。</strong>もう一度やり直してください。' . $this->Member->id, 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-danger'
+				));
+			}
+		}
 	}
 
 }

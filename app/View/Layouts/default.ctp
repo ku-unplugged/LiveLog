@@ -69,6 +69,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				<li<?php echo $this->request->controller === 'members' ? ' class="active"' : '' ?>>
 					<?php echo $this->Html->link('Members', '/members'); ?>
 				</li>
+				<?php if ($auth['admin'] === true): // 管理者ならば?>
+				<li<?php echo isset($this->request->params['admin']) ? ' class="active"' : '' ?>>
+					<?php echo $this->Html->link('Admin', '/pages/admin'); ?>
+				<?php endif; ?>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
