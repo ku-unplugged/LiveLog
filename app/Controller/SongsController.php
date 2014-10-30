@@ -1,6 +1,8 @@
 <?php
 class SongsController extends AppController {
 
+	public $uses = array('Song', 'Live', 'Member');
+
 	public $components = array('Search.Prg');
 
 	public function beforeFilter() {
@@ -20,6 +22,17 @@ class SongsController extends AppController {
 				)
 			);
 			$this->set('songs', $this->paginate());
+		}
+	}
+
+	public function admin_add() {
+		$members = $this->Member->find('list', array('order' => array('Member.year DESC', 'Member.furigana')));
+		$lives = $this->Live->find('list');
+		$this->set('members', $members);
+		$this->set('lives', $lives);
+		if ($this->request->is('post')) {
+			$data = $this->request->data;
+			debug($data);
 		}
 	}
 

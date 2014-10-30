@@ -7,6 +7,8 @@ class Member extends AppModel {
 		'name' => 'CONCAT(Member.last_name, " ", Member.first_name)'
 	);
 
+	public $displayField = 'name';
+
 	public $order = 'Member.furigana';
 
 	public $validate = array(
