@@ -1,13 +1,54 @@
 <?php
 class MembersController extends AppController {
 
+	public $uses = array('Member', 'Song');
+
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('confirm', 'register', 'login');
 	}
 
 	public function index() {
+		$options = array(
+			'order' => array('Member.year DESC', 'Member.furigana')
+		);
+		$members = $this->Member->find('all', $options);
+		$this->set('members', $members);
+	}
 
+	public function detail() {
+		// URLにidがなければindexにリダイレクト，あれば$lmember_idに代入
+		if (isset($this->request->pass[0])) {
+			$member_id = $this->request->pass[0];
+		} else {
+			$this->redirect(array('action' => 'index'));
+		}
+
+		$member = $this->Member->find('first', array(
+			'conditions' => array('Member.id' => $member_id)
+		));
+
+		// $member_idが一致する曲を取得
+		$options = array(
+			'joins' => array(
+				array('table' => 'members_songs',
+					'alias' => 'MembersSong',
+					'type' => 'inner',
+					'conditions' => array(
+						'Song.id = MembersSong.song_id',
+					)
+				)
+			),
+			'order' => array('Live.date DESC', 'Song.order'),
+			'conditions' => array(
+				'MembersSong.member_id' => $member_id
+			)
+		);
+		$songs = $this->Song->find('all', $options);
+
+		// データを渡してdetailビューを表示
+		$this->set('member', $member);
+		$this->set('songs', $songs);
 	}
 
 	public function confirm() {

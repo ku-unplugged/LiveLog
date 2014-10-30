@@ -3,6 +3,10 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 
 class Member extends AppModel {
 
+	public $virtualFields = array(
+		'name' => 'CONCAT(Member.last_name, " ", Member.first_name)'
+	);
+
 	public $order = 'Member.furigana';
 
 	public $validate = array(

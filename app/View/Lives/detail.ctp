@@ -4,7 +4,7 @@ $this->assign('title', h($songs[0]['Live']['name'].' '.date('Y', strtotime($song
 <div class="page-header">
 	<h1>
 		<?php echo h($songs[0]['Live']['name']); ?>
-		<span class="small text-left">
+		<span class="small">
 			- <?php echo $this->element('time', array('date' => $songs[0]['Live']['date'])) . '@' . $songs[0]['Live']['place']; ?>
 		</span>
 	</h1>
