@@ -17,7 +17,12 @@ $this->assign('title', 'Members');
 		<h2><?php echo h($year); ?></h2>
 		<ol>
 	<?php endif; ?>
-			<li class=""><?php echo empty($member['Member']['nickname']) ? h($member['Member']['name']) : h($member['Member']['nickname']); ?></li>
+			<li>
+				<?php echo $this->Html->link(
+					empty($member['Member']['nickname']) ? h($member['Member']['name']) : h($member['Member']['nickname']),
+					'/members/detail/' . $member['Member']['id']
+				); ?>
+			</li>
 <?php endforeach; ?>
 		</ol>
 	</div>
