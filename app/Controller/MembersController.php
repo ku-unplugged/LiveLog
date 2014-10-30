@@ -139,12 +139,12 @@ class MembersController extends AppController {
 	public function admin_add() {
 		if ($this->request->is('post')) {
 			$data = $this->request->data;
-			debug($data);
 			if ($this->Member->save($data)) {
 				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Member->id . '）', 'alert', array(
 					'plugin' => 'BoostCake',
 					'class' => 'alert-success'
 				));
+				$this->request->data = array();
 			} else {
 				$this->Session->setFlash('<strong>追加に失敗しました。</strong>もう一度やり直してください。' . $this->Member->id, 'alert', array(
 					'plugin' => 'BoostCake',
