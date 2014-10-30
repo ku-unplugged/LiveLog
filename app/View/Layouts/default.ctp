@@ -74,7 +74,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				<li>
 					<?php echo $this->Html->link(
 						empty($auth['nickname']) ? $auth['name'] : $auth['nickname'],
-						'members/detal/'.$auth['id']
+						'/members/detail/'.$auth['id']
 					); ?>
 				</li>
 				<li><?php echo $this->Html->link('Sign Out', '/members/logout'); ?></li>

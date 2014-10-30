@@ -26,7 +26,7 @@ $this->assign('title', 'Confirmation of membership');
 		'placeholder' => '苗字（例: 京大）'
 	)); ?>
 	<?php echo $this->Form->input('first_name', array(
-		'placeholder' => '名前（例: 太郎）'
+		'placeholder' => '名前（例: アンプラ太郎）'
 	)); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('Confirm', array(
