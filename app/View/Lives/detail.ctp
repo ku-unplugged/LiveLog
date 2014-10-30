@@ -11,8 +11,11 @@ $this->assign('title', h($songs[0]['Live']['name'].' '.date('Y', strtotime($song
 </div>
 <ol>
 	<?php foreach ($songs as $song): ?>
-	<li>
+	<li class="lead">
 		<?php echo h($song['Song']['name']) . ' / ' . h($song['Song']['artist']); ?>
+		<?php if (isset($auth) && !empty($song['Song']['url'])) {
+			echo $this->Html->link('<span class="glyphicon glyphicon-play-circle"></span>', $song['Song']['url'], array('escape' => false, 'target' => '_blank'));
+		} ?>
 		<?php echo $this->element('members', array('members' => $song['Member'])); ?>
 	</li>
 	<?php endforeach; ?>

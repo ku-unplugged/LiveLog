@@ -2,7 +2,6 @@
 $this->assign('title', 'Song Search');
 $this->assign('script', $this->Html->script('trlink'));
 $this->assign('css', $this->Html->css('trlink'));
-debug($auth);
 ?>
 <div class="page-header">
 	<h1>Song Search</h1>
