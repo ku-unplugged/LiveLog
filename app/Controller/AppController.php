@@ -78,7 +78,7 @@ class AppController extends Controller {
 
         // adminユーザだけが管理 functions にアクセス可能
         if (isset($this->request->params['admin'])) {
-            return (bool)($user['admin'] === '1');
+            return (bool)($user['admin'] === true);
         }
 
         // デフォルトは拒否
