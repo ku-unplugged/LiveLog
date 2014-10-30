@@ -73,7 +73,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<ul class="nav navbar-nav navbar-right">
 				<li>
 					<?php echo $this->Html->link(
-						empty($auth['nickname']) ? $auth['last_name'].' '.$auth['first_name'] : $auth['nickname'],
+						empty($auth['nickname']) ? $auth['name'] : $auth['nickname'],
 						'members/detal/'.$auth['id']
 					); ?>
 				</li>

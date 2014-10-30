@@ -7,7 +7,11 @@ class MembersController extends AppController {
 	}
 
 	public function index() {
-
+		$options = array(
+			'order' => array('Member.year DESC', 'Member.furigana')
+		);
+		$members = $this->Member->find('all', $options);
+		$this->set('members', $members);
 	}
 
 	public function confirm() {
