@@ -71,7 +71,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><?php echo $this->Html->link($auth['last_name'].' '.$auth['first_name'], 'members/detal/'.$auth['id']); ?></li>
+				<li>
+					<?php echo $this->Html->link(
+						empty($auth['nickname']) ? $auth['last_name'].' '.$auth['first_name'] : $auth['nickname'],
+						'members/detal/'.$auth['id']
+					); ?>
+				</li>
 				<li><?php echo $this->Html->link('Sign Out', '/members/logout'); ?></li>
 			</ul>
 			<?php else: // ログインしていなければ ?>
