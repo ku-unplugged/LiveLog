@@ -39,7 +39,8 @@ $this->assign('css', $this->Html->css('select2') . $this->Html->css('select2-boo
 			'name' => 'data[MembersSong][0][instrument]',
 			'div' => false,
 			'wrapInput' => 'col col-sm-2',
-			'placeholder' => '楽器（例: Gt）'
+			'placeholder' => '楽器（例: Gt）',
+			'required' => 'required'
 		)); ?>
 		<?php echo $this->Form->input('sub_instrument', array(
 			'label' => false,
@@ -75,7 +76,7 @@ $this->assign('css', $this->Html->css('select2') . $this->Html->css('select2-boo
 		i++;
 		$('<div id="member' + i + '" class="form-group">'
 			+ '<label class="col col-sm-2 control-label">Member' + (i + 1) + '</label>'
-			+ '<div class="col col-sm-2"><input name="data[MembersSong][' + i + '][instrument]" class="form-control" type="text"></div>'
+			+ '<div class="col col-sm-2"><input name="data[MembersSong][' + i + '][instrument]" class="form-control" type="text" required=""></div>'
 			+ '<div class="col col-sm-2"><input name="data[MembersSong][' + i + '][sub_instrument]" class="form-control" type="text"></div>'
 			+ '<div class="col col-sm-6"><select name="data[MembersSong][' + i + '][member_id]" class="form-control"></select></div>'
 		+ '</div>')

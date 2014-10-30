@@ -14,4 +14,23 @@ class Song extends AppModel {
 		'artist' => array('type' => 'like', 'field' => 'artist')
 	);
 
+	public $validate = array(
+		'live' => array(
+			'rule' => array('numeric')
+		),
+		'order' => array(
+			'rule' => array('numeric')
+		),
+		'name' => array(
+			'rule' => array('noEmpty')
+		),
+		'artist' => array(
+			'rule' => array('noEmpty')
+		),
+		'url' => array(
+			'rule' => array('url'),
+			'allowEmpty' => true
+		)
+	);
+
 }
