@@ -19,4 +19,11 @@ $this->assign('title', 'Admin');
 			'action' => 'add'
 		)); ?>
 	</li>
+	<li class="lead">
+		<?php echo $this->Html->link('曲の追加', array(
+			'admin' => true,
+			'controller' => 'songs',
+			'action' => 'add'
+		)); ?>
+	</li>
 </ul>

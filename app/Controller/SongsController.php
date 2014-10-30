@@ -33,6 +33,19 @@ class SongsController extends AppController {
 		if ($this->request->is('post')) {
 			$data = $this->request->data;
 			debug($data);
+			//$this->Song->bindModel(array('hasMany' => array('MembersSong')));
+			if ($this->Song->saveAssociated($data)) {
+				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Song->id . '）', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-success'
+				));
+				$this->request->data = array();
+			} else {
+				$this->Session->setFlash('<strong>追加に失敗しました。</strong>もう一度やり直してください。', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-danger'
+				));
+			}
 		}
 	}
 

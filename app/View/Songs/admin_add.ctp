@@ -17,14 +17,16 @@ $this->assign('css', $this->Html->css('select2') . $this->Html->css('select2-boo
 	),
 	'class' => 'well form-horizontal'
 )); ?>
-	<?php echo $this->Form->input('live'); ?>
+	<?php echo $this->Form->input('live', array(
+		'name' => 'data[Song][live_id]'
+	)); ?>
 	<?php echo $this->Form->input('order', array(
 		'placeholder' => '曲順（例: 1）'
 	)); ?>
 	<?php echo $this->Form->input('name', array(
 		'placeholder' => '曲名（例: アンプラのテーマ）'
 	)); ?>
-	<?php echo $this->Form->input('artisut', array(
+	<?php echo $this->Form->input('artist', array(
 		'placeholder' => 'アーティスト名（例: Unpluggeders）'
 	)); ?>
 	<?php echo $this->Form->input('url', array(
@@ -79,13 +81,13 @@ $this->assign('css', $this->Html->css('select2') . $this->Html->css('select2-boo
 		+ '</div>')
 		.find('select')
 			.append(options.clone())
-			.select2({ minimumInputLength: 2 })
+			.select2({ minimumInputLength: 1 })
 		.end()
 		.insertBefore('#addMember');
 	});
 </script>
 <script>
 	$(document).ready(function() { $("#SongMembers").select2({
-		minimumInputLength: 2
+		minimumInputLength: 1
 	}); });
 </script>
