@@ -3,6 +3,11 @@ class SongsController extends AppController {
 
 	public $components = array('Search.Prg');
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('index');
+	}
+
 	public function index() {
 		if ($this->request->is('get')) {
 			$this->Prg->commonProcess();

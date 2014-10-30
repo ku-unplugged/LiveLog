@@ -32,13 +32,42 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-    public $components = array('DebugKit.Toolbar');
+    public $components = array(
+        'DebugKit.Toolbar' => array(),
+        'Session' => array(),
+        'Auth' => array(
+            'loginAction' => array(
+                'controller' => 'members',
+                'action' => 'login'
+            ),
+            'authenticate' => array(
+                'Form' => array(
+                    'userModel' =>'Member',
+                    'fields' => array('username' => 'email')
+                )
+            ),
+            'flash' => array(
+                'element' => 'alert',
+                'key' => 'auth',
+                'params' => array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-warning'
+                )
+            ),
+            'loginRedirect' => array('controller' => 'songs', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'index')
+        )
+    );
 
     public $helpers = array(
-		'Session',
-		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
-		'Form' => array('className' => 'BoostCake.BoostCakeForm'),
-		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
-	);
+        'Session',
+        'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+        'Form' => array('className' => 'BoostCake.BoostCakeForm'),
+        'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+    );
+
+    public function beforeFilter() {
+        $this->set('auth', $this->Auth->user());
+    }
 
 }

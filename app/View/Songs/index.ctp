@@ -1,5 +1,7 @@
 <?php
 $this->assign('title', 'Song Search');
+$this->assign('script', $this->Html->script('trlink'));
+$this->assign('css', $this->Html->css('trlink'));
 ?>
 <div class="page-header">
 	<h1>Song Search</h1>
@@ -28,7 +30,7 @@ $this->assign('title', 'Song Search');
 <p class="text-right">
 	<?php echo $this->Paginator->counter(array('format' => 'range')); ?>
 </p>
-<table class="table table-striped">
+<table class="table table-hover">
 	<thead>
 		<tr>
 			<th><?php echo $this->Paginator->sort('Live.date', 'Date') ?></th>
@@ -40,7 +42,7 @@ $this->assign('title', 'Song Search');
 	</thead>
 	<tbody>
 		<?php foreach($songs as $song): ?>
-		<tr>
+		<tr<?php if (isset($auth) && !empty($song['Song']['url'])) echo ' data-href="' . h($song['Song']['url']) . '"'; ?>>
 			<td><?php echo $this->element('time', array('date' => $song['Live']['date'])) ?></td>
 			<td><?php echo h($song['Live']['name']); ?></td>
 			<td><?php echo h($song['Song']['name']); ?></td>

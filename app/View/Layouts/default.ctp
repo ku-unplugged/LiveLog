@@ -47,7 +47,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -57,17 +57,67 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse" id="navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><?php echo $this->Html->link('Song Search', '/Songs/'); ?></li>
-				<li><?php echo $this->Html->link('Live List', '/Lives/'); ?></li>
+				<li<?php echo $this->request->controller === 'songs' ? ' class="active"' : '' ?>>
+					<?php echo $this->Html->link('Song Search', '/songs'); ?>
+				</li>
+				<li<?php echo $this->request->controller === 'lives' ? ' class="active"' : '' ?>>
+					<?php echo $this->Html->link('Live List', '/lives'); ?>
+				</li>
+			<?php if (isset($auth)): // ログインしていれば ?>
+				<li<?php echo $this->request->controller === 'members' ? ' class="active"' : '' ?>>
+					<?php echo $this->Html->link('Members', '/members'); ?>
+				</li>
 			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<?php echo $this->Html->link(
+						empty($auth['nickname']) ? $auth['last_name'].' '.$auth['first_name'] : $auth['nickname'],
+						'members/detal/'.$auth['id']
+					); ?>
+				</li>
+				<li><?php echo $this->Html->link('Sign Out', '/members/logout'); ?></li>
+			</ul>
+			<?php else: // ログインしていなければ ?>
+			</ul>
+			<?php echo $this->Html->link(
+				'<button type="button" class="btn btn-info navbar-btn navbar-right" style="margin-left:15px">Sign Up</button>',
+				'/members/confirm',
+				array('escape' => false)
+			); ?>
+			<?php echo $this->Form->create('Member', array(
+				'url' => array(
+					'controller' => 'members',
+					'action' => 'login'
+				),
+				'inputDefaults' => array(
+					'div' => 'form-group',
+					'label' => false,
+					'wrapInput' => false,
+					'class' => 'form-control'
+				),
+				'class' => 'navbar-form navbar-right'
+			)); ?>
+			<?php echo $this->Form->input('email', array(
+				'placeholder' => 'email'
+			)); ?>
+			<?php echo $this->Form->input('password', array(
+				'placeholder' => 'password'
+			)); ?>
+			<?php echo $this->Form->submit('Sign In', array(
+				'div' => false,
+				'class' => 'btn btn-default'
+			)); ?>
+			<?php echo $this->Form->end(); ?>
+			<?php endif; ?>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container -->
 	</nav>
 	<div class="container">
 		<section>
 			<?php echo $this->Session->flash(); ?>
+			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $this->fetch('content'); ?>
 		</section>
 		<footer>
