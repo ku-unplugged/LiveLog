@@ -80,10 +80,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<?php echo $this->Html->link(
-						empty($auth['nickname']) ? $auth['name'] : $auth['nickname'],
-						'/members/detail/'.$auth['id']
-					); ?>
+					<?php echo $this->Html->link($auth['name'], '/members/detail/' . $auth['id']); ?>
 				</li>
 				<li><?php echo $this->Html->link('Sign Out', '/members/logout'); ?></li>
 			</ul>

@@ -46,6 +46,7 @@ class AppController extends Controller {
                     'fields' => array('username' => 'email')
                 )
             ),
+            'authorize' => array('Controller'),
             'flash' => array(
                 'element' => 'alert',
                 'key' => 'auth',
@@ -54,8 +55,7 @@ class AppController extends Controller {
                     'class' => 'alert-warning'
                 )
             ),
-            'loginRedirect' => array('controller' => 'songs', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'index')
+            'loginRedirect' => array('controller' => 'songs', 'action' => 'index')
         )
     );
 

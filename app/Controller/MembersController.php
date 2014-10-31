@@ -16,17 +16,11 @@ class MembersController extends AppController {
 		$this->set('members', $members);
 	}
 
-	public function detail() {
-		// URLにidがなければindexにリダイレクト，あれば$lmember_idに代入
-		if (isset($this->request->pass[0])) {
-			$member_id = $this->request->pass[0];
-		} else {
-			$this->redirect(array('action' => 'index'));
+	public function detail($id = null) {
+		if (!$this->Member->exists($id)) {
+			throw new NotFoundException('不正なメンバーIDです');
 		}
-
-		$member = $this->Member->find('first', array(
-			'conditions' => array('Member.id' => $member_id)
-		));
+		$member = $this->Member->find('first', array('conditions' => array('Member.id' => $id)));
 
 		// $member_idが一致する曲を取得
 		$options = array(
@@ -41,7 +35,7 @@ class MembersController extends AppController {
 			),
 			'order' => array('Live.date DESC', 'Song.order'),
 			'conditions' => array(
-				'MembersSong.member_id' => $member_id
+				'MembersSong.member_id' => $id
 			)
 		);
 		$songs = $this->Song->find('all', $options);
@@ -152,6 +146,33 @@ class MembersController extends AppController {
 				));
 			}
 		}
+	}
+
+	public function edit($id = null) {
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Member->save($this->request->data)) {
+				$this->Session->setFlash('<strong>更新しました。</strong>', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-success'
+				));
+				return $this->redirect(array('action' => 'detail', $id));
+			} else {
+				$this->Session->setFlash('<strong>更新に失敗しました。</strong>もう一度やり直してください。', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-danger'
+				));
+			}
+		} else {
+			$options = array('conditions' => array('Member.id' => $id));
+			$this->request->data = $this->Member->find('first', $options);
+		}
+	}
+
+	public function isAuthorized($user = null) {
+		if ($this->action === 'edit') {
+			return $this->request->pass[0] === $user['id'];
+		}
+		return parent::isAuthorized($user);
 	}
 
 }
