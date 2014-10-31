@@ -21,17 +21,14 @@ class LivesController extends AppController {
 		$this->set('lives', $lives);
 	}
 
-	public function detail() {
-		// URLにidがなければindexにリダイレクト，あれば$live_idに代入
-		if (isset($this->request->pass[0])) {
-			$live_id = $this->request->pass[0];
-		} else {
-			$this->redirect(array('action' => 'index'));
+	public function detail($id = null) {
+		if (!$this->Live->exists($id)) {
+			throw new NotFoundException('不正なライブIDです');
 		}
 
 		// $live_idが一致するライブの曲を取得
 		$options = array(
-			'conditions' => array('Song.live_id' => $live_id),
+			'conditions' => array('Song.live_id' => $id),
 			'order' => array('Song.order')
 		);
 		$songs = $this->Song->find('all', $options);
