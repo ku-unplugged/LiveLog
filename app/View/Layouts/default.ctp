@@ -40,7 +40,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-	<style> body { padding-top: 70px; } </style>
+	<style>
+		body { padding-top: 70px; }
+		.navbar-form.navbar-right:last-child { margin-right: 0; }
+	</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -87,7 +90,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php else: // ログインしていなければ ?>
 			</ul>
 			<?php echo $this->Html->link(
-				'<button type="button" class="btn btn-info navbar-btn navbar-right" style="margin-left:15px">Sign Up</button>',
+				'<button type="button" class="btn btn-info navbar-btn navbar-right">Sign Up</button>',
 				'/members/confirm',
 				array('escape' => false)
 			); ?>
@@ -102,7 +105,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					'wrapInput' => false,
 					'class' => 'form-control'
 				),
-				'class' => 'navbar-form navbar-right'
+				'class' => 'navbar-form navbar-right',
 			)); ?>
 			<?php echo $this->Form->input('email', array(
 				'placeholder' => 'email'
