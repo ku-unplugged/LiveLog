@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', h($songs[0]['Live']['name'].' '.date('Y', strtotime($songs[0]['Live']['date']))));
+$this->assign('title', h($songs[0]['Live']['name_year']));
 ?>
 <div class="page-header">
 	<h1>

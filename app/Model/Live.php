@@ -1,9 +1,11 @@
 <?php
 class Live extends AppModel {
 
-	public $hasMany = array('Song' => array(
-		'foreignKey' => 'live_id' // 指定しなければ life_id になる
-	));
+	public $virtualFields = array(
+		'name_year' => 'CONCAT(Live.name, " ", DATE_FORMAT(Live.date, "%Y"))'
+	);
+
+	public $displayField = 'name_year';
 
 	public $order = 'Live.date DESC';
 

@@ -53,7 +53,7 @@ class LivesController extends AppController {
 				));
 				$this->request->data = array();
 			} else {
-				$this->Session->setFlash('<strong>追加に失敗しました。</strong>もう一度やり直してください。' . $this->Member->id, 'alert', array(
+				$this->Session->setFlash('<strong>追加に失敗しました。</strong>もう一度やり直してください。', 'alert', array(
 					'plugin' => 'BoostCake',
 					'class' => 'alert-danger'
 				));
