@@ -1,7 +1,7 @@
 <?php
 $this->assign('title', 'Add Song');
-$this->assign('script', $this->Html->script('select2.min') . $this->Html->script('select2_locale_ja'));
-$this->assign('css', $this->Html->css('select2') . $this->Html->css('select2-bootstrap'));
+$this->assign('script', $this->Html->script(array('select2.min', 'select2_locale_ja')));
+$this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 ?>
 <div class="page-header">
 	<h1>Add Song</h1>
