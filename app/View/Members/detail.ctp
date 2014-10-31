@@ -4,9 +4,12 @@ $this->assign('title', h($member['Member']['name']));
 <div class="page-header">
 	<h1>
 		<?php echo h($member['Member']['name']); ?>
-		<?php if (!empty($member['Member']['nickname'])) {
-			echo '<span class="small"> - ' . h($member['Member']['nickname']) . '</span>';
-		} ?>
+		<span class="small">
+		<?php if (!empty($member['Member']['nickname']))
+			echo ' - ' . h($member['Member']['nickname']); ?>
+		<?php if ($auth['id'] === $member['Member']['id'])
+			echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', '/members/edit/' . $auth['id'], array('escape' => false)); ?>
+		</span>
 	</h1>
 </div>
 <table class="table table-striped">
