@@ -22,10 +22,10 @@ class Song extends AppModel {
 			'rule' => array('numeric')
 		),
 		'name' => array(
-			'rule' => array('noEmpty')
+			'rule' => array('notEmpty')
 		),
 		'artist' => array(
-			'rule' => array('noEmpty')
+			'rule' => array('notEmpty')
 		),
 		'url' => array(
 			'rule' => array('url'),

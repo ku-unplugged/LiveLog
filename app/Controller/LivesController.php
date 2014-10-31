@@ -13,11 +13,9 @@ class LivesController extends AppController {
 		$options = array(
 			'conditions' => array(
 				'Live.date <' => date('Y-m-d')
-			),
-			'recursive' => 0
+			)
 		);
 		$lives = $this->Live->find('all', $options);
-		// debug($lives);
 
 		// データを渡してindexビューを表示
 		$this->set('lives', $lives);
@@ -37,7 +35,6 @@ class LivesController extends AppController {
 			'order' => array('Song.order')
 		);
 		$songs = $this->Song->find('all', $options);
-		// debug($songs);
 
 		// データを渡してdetailビューを表示
 		$this->set('songs', $songs);
