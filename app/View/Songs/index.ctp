@@ -5,6 +5,10 @@ $this->assign('title', 'Song Search');
 	<h1>Song Search</h1>
 </div>
 <?php echo $this->Form->create('Song', array(
+	'url' => array(
+		'controller' => 'songs',
+		'action' => 'index'
+	),
 	'type' => 'get',
 	'inputDefaults' => array(
 		'div' => 'form-group',
