@@ -39,7 +39,10 @@ $this->assign('title', 'Song Search');
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th><?php echo $this->Paginator->sort('Live.date', 'Date') ?></th>
+				<?php if (isset($auth) && $auth['admin'] === true): ?>
+				<th><?php echo $this->Paginator->sort('Song.id', 'ID'); ?></th>
+				<?php endif; ?>
+				<th><?php echo $this->Paginator->sort('Live.date', 'Date'); ?></th>
 				<th>Live</th>
 				<th>Song</th>
 				<th>Artist</th>
@@ -52,6 +55,9 @@ $this->assign('title', 'Song Search');
 		<tbody>
 			<?php foreach($songs as $song): ?>
 			<tr>
+				<?php if (isset($auth) && $auth['admin'] === true): ?>
+				<td><?php echo h($song['Song']['id']); ?></td>
+				<?php endif; ?>
 				<td><?php echo $this->element('time', array('date' => $song['Live']['date'])) ?></td>
 				<td><?php echo $this->Html->link($song['Live']['name'], '/lives/detail/' . $song['Live']['id']); ?></td>
 				<td><?php echo h($song['Song']['name']); ?></td>

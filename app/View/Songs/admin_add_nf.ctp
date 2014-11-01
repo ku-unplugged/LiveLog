@@ -1,0 +1,100 @@
+<?php
+$this->assign('title', 'Add Song');
+$this->assign('script', $this->Html->script(array('select2.min', 'select2_locale_ja')));
+$this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
+?>
+<div class="page-header">
+	<h1>Add NF Song</h1>
+</div>
+<?php echo $this->Form->create(array(
+	'inputDefaults' => array(
+		'div' => 'form-group',
+		'label' => array(
+			'class' => 'col col-sm-2 control-label'
+		),
+		'wrapInput' => 'col col-sm-10',
+		'class' => 'form-control'
+	),
+	'class' => 'well form-horizontal'
+)); ?>
+	<?php echo $this->Form->input('live', array(
+		'name' => 'data[Song][live_id]'
+	)); ?>
+	<?php
+	// ここから
+	echo $this->Form->input('nf_time', array(
+		'label' => 'Time',
+		'name' => 'data[Song][time]',
+		'placeholder' => '曲順（例: 09:30）'
+	));
+	// ここまでが違う
+	?>
+	<?php echo $this->Form->input('order', array(
+		'placeholder' => '曲順（例: 1）'
+	)); ?>
+	<?php echo $this->Form->input('name', array(
+		'placeholder' => '曲名（例: アンプラのテーマ）'
+	)); ?>
+	<?php echo $this->Form->input('artist', array(
+		'placeholder' => 'アーティスト名（例: Unpluggeders）'
+	)); ?>
+	<div id="member0" class="form-group">
+		<label class="col col-sm-2 control-label">Member1</label>
+		<?php echo $this->Form->input('instrument', array(
+			'label' => false,
+			'name' => 'data[MembersSong][0][instrument]',
+			'div' => false,
+			'wrapInput' => 'col col-sm-2',
+			'placeholder' => '楽器（例: Gt）',
+			'required' => 'required'
+		)); ?>
+		<?php echo $this->Form->input('sub_instrument', array(
+			'label' => false,
+			'name' => 'data[MembersSong][0][sub_instrument]',
+			'div' => false,
+			'wrapInput' => 'col col-sm-2',
+			'placeholder' => 'サブ楽器（例: Cho）'
+		)); ?>
+		<?php echo $this->Form->input('members', array(
+			'label' => false,
+			'name' => 'data[MembersSong][0][member_id]',
+			'div' => false,
+			'wrapInput' => 'col col-sm-6',
+			'class' => 'form-control'
+		)); ?>
+	</div>
+	<div id="addMember" class="form-group">
+		<div class="col col-sm-2 text-right">
+			<button type="button" id="addMemberBtn" class="btn btn-link"><span class="glyphicon glyphicon-plus"></span></button>
+		</div>
+	</div>
+	<div class="form-group">
+		<?php echo $this->Form->submit('Add Song', array(
+			'div' => 'col col-sm-10 col-sm-offset-2',
+			'class' => 'btn btn-default'
+		)); ?>
+	</div>
+<?php echo $this->Form->end(); ?>
+<script>
+	var options = $('#SongMembers').contents();
+	var i = 0;
+	$('#addMemberBtn').click(function() {
+		i++;
+		$('<div class="form-group">'
+			+ '<label class="col col-sm-2 control-label">Member' + (i + 1) + '</label>'
+			+ '<div class="col col-sm-2"><input name="data[MembersSong][' + i + '][instrument]" class="form-control" type="text" required=""></div>'
+			+ '<div class="col col-sm-2"><input name="data[MembersSong][' + i + '][sub_instrument]" class="form-control" type="text"></div>'
+			+ '<div class="col col-sm-6"><select name="data[MembersSong][' + i + '][member_id]" class="form-control"></select></div>'
+		+ '</div>')
+		.find('select')
+			.append(options.clone())
+			.select2({ minimumInputLength: 1 })
+		.end()
+		.insertBefore('#addMember');
+	});
+</script>
+<script>
+	$(document).ready(function() { $("#SongMembers").select2({
+		minimumInputLength: 1
+	}); });
+</script>
