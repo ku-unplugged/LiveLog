@@ -41,6 +41,7 @@ $this->assign('title', 'Admin');
 		'controller' => 'songs',
 		'action' => 'delete'
 	),
+	'onsubmit' => 'return confirm("本当に削除しますか？")',
 	'inputDefaults' => array(
 		'div' => 'form-group',
 		'label' => false,
