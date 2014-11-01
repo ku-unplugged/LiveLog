@@ -43,7 +43,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	?>
 	<style>
 		.navbar-form.navbar-right:last-child { margin-right: 0; }
-		.list-inline { margin-bottom: 0; }
+		td .list-inline { margin-bottom: 0; }
 	</style>
 </head>
 <body>
