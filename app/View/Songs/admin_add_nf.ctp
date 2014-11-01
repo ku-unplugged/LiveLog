@@ -40,24 +40,21 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	)); ?>
 	<div id="member0" class="form-group">
 		<label class="col col-sm-2 control-label">Member1</label>
-		<?php echo $this->Form->input('instrument', array(
+		<?php echo $this->Form->input('MembersSong.0.instrument', array(
 			'label' => false,
-			'name' => 'data[MembersSong][0][instrument]',
 			'div' => false,
 			'wrapInput' => 'col col-sm-2',
 			'placeholder' => '楽器（例: Gt）',
 			'required' => 'required'
 		)); ?>
-		<?php echo $this->Form->input('sub_instrument', array(
+		<?php echo $this->Form->input('MembersSong.0.sub_instrument', array(
 			'label' => false,
-			'name' => 'data[MembersSong][0][sub_instrument]',
 			'div' => false,
 			'wrapInput' => 'col col-sm-2',
 			'placeholder' => 'サブ楽器（例: Cho）'
 		)); ?>
-		<?php echo $this->Form->input('members', array(
+		<?php echo $this->Form->input('MembersSong.0.member_id', array(
 			'label' => false,
-			'name' => 'data[MembersSong][0][member_id]',
 			'div' => false,
 			'wrapInput' => 'col col-sm-6',
 			'class' => 'form-control'

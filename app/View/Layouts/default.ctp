@@ -31,15 +31,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		// Bootstrap
-		// echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.min');
-		echo $this->Html->script(array('jquery.min', 'bootstrap.min'));
+		echo $this->Html->script(array('jquery.min', 'bootstrap.min', 'analytics'));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
-		echo $this->Html->script('analytics');
 	?>
 	<style>
 		.navbar-form.navbar-right:last-child { margin-right: 0; }
@@ -69,14 +66,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				<li<?php echo $this->request->controller === 'lives' ? ' class="active"' : '' ?>>
 					<?php echo $this->Html->link('Live List', '/lives'); ?>
 				</li>
-			<?php if (isset($auth)): // ログインしていれば ?>
+<?php if (isset($auth)): // ログインしていれば ?>
 				<li<?php echo $this->request->controller === 'members' ? ' class="active"' : '' ?>>
 					<?php echo $this->Html->link('Members', '/members'); ?>
 				</li>
-				<?php if ($auth['admin'] === true): // 管理者ならば?>
+	<?php if ($auth['admin'] === true): // 管理者ならば?>
 				<li<?php echo isset($this->request->params['admin']) ? ' class="active"' : '' ?>>
 					<?php echo $this->Html->link('Admin', '/pages/admin'); ?>
-				<?php endif; ?>
+	<?php endif; ?>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -85,7 +82,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				</li>
 				<li><?php echo $this->Html->link('Sign Out', '/members/logout'); ?></li>
 			</ul>
-			<?php else: // ログインしていなければ ?>
+<?php else: // ログインしていなければ ?>
 			</ul>
 			<?php echo $this->Html->link(
 				'<button type="button" class="btn btn-info navbar-btn navbar-right">Sign Up</button>',
@@ -116,7 +113,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				'class' => 'btn btn-default'
 			)); ?>
 			<?php echo $this->Form->end(); ?>
-			<?php endif; ?>
+<?php endif; ?>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container -->
 	</nav>

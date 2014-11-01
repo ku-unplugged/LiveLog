@@ -16,9 +16,8 @@ $this->assign('title', 'Edit Nickname');
 	'class' => 'well form-horizontal'
 )); ?>
 	<?php echo $this->Form->input('nickname', array(
-		'placeholder' => 'ニックネーム'
+		'placeholder' => '表示名'
 	)); ?>
-	<?php echo $this->Form->hidden('id'); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('Update', array(
 			'div' => 'col col-md-9 col-md-offset-3',

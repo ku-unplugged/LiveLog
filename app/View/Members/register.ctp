@@ -5,10 +5,10 @@ $this->assign('title', 'Sign Up');
 	<h1>Sign Up</h1>
 </div>
 <p>
-	ようこそ！　<?php echo h($last_name) . ' ' . h($first_name); ?> さん<br>
+	ようこそ！　<?php echo h($member['Member']['last_name']) . ' ' . h($member['Member']['first_name']); ?> さん<br>
 	メールアドレスとパスワードを入力して登録を完了してください。
 </p>
-<?php echo $this->Form->create('Register', array(
+<?php echo $this->Form->create(array(
 	'inputDefaults' => array(
 		'div' => 'form-group',
 		'label' => array(

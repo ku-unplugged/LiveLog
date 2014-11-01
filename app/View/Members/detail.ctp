@@ -22,7 +22,7 @@ $this->assign('title', h($member['Member']['name']));
 				<th>Song</th>
 				<th>Artist</th>
 				<th>Members</th>
-				<th>Video</th>
+				<th><span class="glyphicon glyphicon-play-circle"></span></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,7 +39,7 @@ $this->assign('title', h($member['Member']['name']));
 				<td><?php echo h($song['Song']['name']); ?></td>
 				<td><?php echo h($song['Song']['artist']); ?></td>
 				<td><?php echo $this->element('members', array('members' => $song['Member'])); ?></td>
-				<td class="text-center">
+				<td>
 					<?php if (!empty($song['Song']['url'])) {
 						echo $this->Html->link('<span class="glyphicon glyphicon-play-circle"></span>', $song['Song']['url'], array('escape' => false, 'target' => '_blank'));
 					} ?>

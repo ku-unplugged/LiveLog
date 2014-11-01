@@ -27,14 +27,10 @@ class SongsController extends AppController {
 	}
 
 	public function admin_add() {
-		$members = $this->Member->find('list', array('order' => array('Member.year DESC', 'Member.furigana')));
-		$lives = $this->Live->find('list');
-		$this->set('members', $members);
-		$this->set('lives', $lives);
 		if ($this->request->is('post')) {
-			$data = $this->request->data;
+			// そのままではメンバーを追加できないのでMembersSongモデルをhasManyする
 			$this->Song->bindModel(array('hasMany' => array('MembersSong')));
-			if ($this->Song->saveAssociated($data)) {
+			if ($this->Song->saveAssociated($this->request->data)) {
 				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Song->id . '）', 'alert', array(
 					'plugin' => 'BoostCake',
 					'class' => 'alert-success'
@@ -47,6 +43,10 @@ class SongsController extends AppController {
 				));
 			}
 		}
+		$members = $this->Member->find('list', array('order' => array('Member.year DESC', 'Member.furigana')));
+		$lives = $this->Live->find('list');
+		$this->set('members', $members);
+		$this->set('lives', $lives);
 	}
 
 	public function admin_add_nf() {

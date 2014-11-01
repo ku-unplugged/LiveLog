@@ -6,6 +6,7 @@ $this->assign('title', 'Members');
 </div>
 <div class="row">
 	<?php
+	// 入部年度 year と i を初期化
 	$year = (int)$members['0']['Member']['year'];
 	$i = 0;
 	?>
@@ -13,10 +14,10 @@ $this->assign('title', 'Members');
 		<h2><?php echo h($year); ?></h2>
 		<ol>
 <?php foreach ($members as $member) : ?>
-<?php if ($year !== (int)$member['Member']['year']): $year--; $i++; ?>
+<?php if ($year !== (int)$member['Member']['year']): $year--; $i++; // 入部年度異なればdiv.col-sm-3を閉じて新たな入部年度を表示 ?>
 		</ol>
 	</div>
-<?php if ($i % 4 === 0): ?>
+<?php if ($i % 4 === 0): // 4年毎にdiv.rowを閉じる ?>
 </div>
 <div class="row">
 <?php endif; ?>

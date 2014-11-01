@@ -1,5 +1,6 @@
 <?php
 $this->assign('title', 'Live List');
+// テーブルの列をリンクにするためのJSとCSS
 $this->assign('script', $this->Html->script('trlink'));
 $this->assign('css', $this->Html->css('trlink'));
 ?>
