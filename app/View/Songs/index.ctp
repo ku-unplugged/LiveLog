@@ -71,11 +71,11 @@ $this->assign('title', 'Song Search');
 				</td>
 				<?php if ($auth['admin'] === true): ?>
 				<td>
-					<?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array(
-						'admin' => true,
-						'action' => 'edit',
-						$song['Song']['id']
-					), array('escape' => false)); ?>
+					<?php echo $this->Html->link('
+						<span class="glyphicon glyphicon-edit"></span>',
+						array('admin' => true, 'action' => 'edit', $song['Song']['id']),
+						array('escape' => false)
+					); ?>
 				</td>
 				<?php endif; ?>
 				<?php endif; ?>

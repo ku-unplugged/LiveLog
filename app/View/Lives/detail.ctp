@@ -14,6 +14,7 @@ $this->assign('title', h($songs[0]['Live']['name_year']));
 	<?php foreach ($songs as $song): ?>
 	<li class="lead">
 		<?php echo h($song['Song']['name']) . ' / ' . h($song['Song']['artist']); ?>
+		<small>
 		<?php if (isset($auth) && !empty($song['Song']['url'])) { // ログインしていてかつURLが空でなければ
 			echo $this->Html->link(
 				'<span class="glyphicon glyphicon-play-circle"></span>',
@@ -21,6 +22,14 @@ $this->assign('title', h($songs[0]['Live']['name_year']));
 				array('escape' => false, 'target' => '_blank')
 			); // 動画へのリンクを表示
 		} ?>
+		<?php if (isset($auth) && $auth['admin'] === true) { // 管理者ならば
+			echo $this->Html->link(
+				'<span class="glyphicon glyphicon-edit"></span>',
+				array('admin' => true, 'action' => 'edit', $song['Song']['id']),
+				array('escape' => false)
+			); // 編集画面へのリンクを表示
+		} ?>
+	</small>
 		<?php echo $this->element('members', array('members' => $song['Member'])); ?>
 	</li>
 	<?php endforeach; ?>
