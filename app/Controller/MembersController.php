@@ -33,7 +33,7 @@ class MembersController extends AppController {
 					)
 				)
 			),
-			'order' => array('Live.date DESC', 'Song.time', 'Song.order'),
+			'order' => array('Live.date DESC', 'Song.time DESC', 'Song.order DESC'),
 			'conditions' => array(
 				'MembersSong.member_id' => $id
 			)
