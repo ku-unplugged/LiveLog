@@ -31,7 +31,9 @@ $this->assign('title', h($member['Member']['name']));
 				<td><?php echo $this->element('time', array('date' => $song['Live']['date'])) ?></td>
 				<td><?php echo $this->Html->link($song['Live']['name'], '/lives/detail/' . $song['Live']['id']); ?></td>
 				<td>
-					<?php if (!empty($song['Song']['time'])) echo h($song['Song']['time']) . ' '; ?>
+					<?php if (!empty($song['Song']['time'])):?>
+						<time datetime="<?php echo h($song['Song']['time']); ?>"><?php echo date('H:i', strtotime($song['Song']['time'])); ?></time>
+					<?php endif; ?>
 					<?php echo h($song['Song']['order']); ?>
 				</td>
 				<td><?php echo h($song['Song']['name']); ?></td>
