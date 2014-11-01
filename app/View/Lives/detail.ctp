@@ -23,7 +23,7 @@ $this->assign('title', h($songs[0]['Live']['name_year']));
 </ol>
 <?php else: ?>
 <div class="table-responsive">
-	<table class="table table-striped">
+	<table class="table table-striped table-condensed">
 		<thead>
 			<tr>
 				<th>Time</th>
