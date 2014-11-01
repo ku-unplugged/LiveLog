@@ -21,6 +21,9 @@ class Song extends AppModel {
 		'order' => array(
 			'rule' => array('numeric')
 		),
+		'time' => array(
+			'rule' => array('time')
+		),
 		'name' => array(
 			'rule' => array('notEmpty')
 		),

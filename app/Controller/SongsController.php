@@ -18,6 +18,7 @@ class SongsController extends AppController {
 				'limit' => 20,
 				'order' => array(
 					'Live.date' => 'DESC',
+					'Song.time' => 'ASC',
 					'Song.order' => 'ASC'
 				)
 			);
@@ -46,6 +47,36 @@ class SongsController extends AppController {
 				));
 			}
 		}
+	}
+
+	public function admin_add_nf() {
+		$this->admin_add();
+	}
+
+	public function admin_delete() {
+		if ($this->request->is(array('post', 'delete'))) {
+			$this->Song->id = (int)$this->request->data['DeleteSong']['id'];
+			if (!$this->Song->exists()) {
+				throw new NotFoundException('不正なIDです');
+			}
+			if ($this->Song->delete()) {
+				$this->Session->setFlash('<strong>削除しました。</strong>', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-success'
+				));
+			} else {
+				$this->Session->setFlash('<strong>削除に失敗しました。</strong>もう一度やり直してください。', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-danger'
+				));
+			}
+		}
+		return $this->redirect(array(
+			'admin' => false,
+			'controller' => 'pages',
+			'action' => 'display',
+			'admin'
+		));
 	}
 
 }

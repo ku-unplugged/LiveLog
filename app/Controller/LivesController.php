@@ -9,13 +9,7 @@ class LivesController extends AppController {
 	}
 
 	public function index() {
-		// livesテーブルから今日以前のライブのレコードを取得
-		$options = array(
-			'conditions' => array(
-				'Live.date <' => date('Y-m-d')
-			)
-		);
-		$lives = $this->Live->find('all', $options);
+		$lives = $this->Live->find('all');
 
 		// データを渡してindexビューを表示
 		$this->set('lives', $lives);
@@ -29,7 +23,7 @@ class LivesController extends AppController {
 		// $live_idが一致するライブの曲を取得
 		$options = array(
 			'conditions' => array('Song.live_id' => $id),
-			'order' => array('Song.order')
+			'order' => array('Song.time', 'Song.order')
 		);
 		$songs = $this->Song->find('all', $options);
 
