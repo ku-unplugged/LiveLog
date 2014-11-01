@@ -22,7 +22,8 @@ class Song extends AppModel {
 			'rule' => array('numeric')
 		),
 		'time' => array(
-			'rule' => array('time')
+			'rule' => array('time'),
+			'allowEmpty' => true
 		),
 		'name' => array(
 			'rule' => array('notEmpty')

@@ -53,9 +53,34 @@ class SongsController extends AppController {
 		$this->admin_add();
 	}
 
+	public function admin_edit($id = null) {
+		if (!$this->Song->exists($id)) {
+			throw new NotFoundException(__('Invalid category'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Song->save($this->request->data)) {
+				$this->Session->setFlash('<strong>更新しました。</strong>', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-success'
+				));
+				return $this->redirect(array('admin' => false, 'action' => 'index'));
+			} else {
+				$this->Session->setFlash('<strong>更新に失敗しました。</strong>もう一度やり直してください。', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-danger'
+				));
+			}
+		} else {
+			$options = array('conditions' => array('Song.id' => $id));
+			$this->request->data = $this->Song->find('first', $options);
+		}
+		$lives = $this->Live->find('list');
+		$this->set('lives', $lives);
+	}
+
 	public function admin_delete() {
 		if ($this->request->is(array('post', 'delete'))) {
-			$this->Song->id = (int)$this->request->data['DeleteSong']['id'];
+			$this->Song->id = (int)$this->request->data['Song']['id'];
 			if (!$this->Song->exists()) {
 				throw new NotFoundException('不正なIDです');
 			}
@@ -73,9 +98,8 @@ class SongsController extends AppController {
 		}
 		return $this->redirect(array(
 			'admin' => false,
-			'controller' => 'pages',
-			'action' => 'display',
-			'admin'
+			'controller' => 'songs',
+			'action' => 'index'
 		));
 	}
 

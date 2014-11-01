@@ -34,27 +34,3 @@ $this->assign('title', 'Admin');
 		)); ?>
 	</li>
 </ul>
-<h2>曲の削除</h2>
-<?php echo $this->Form->create('DeleteSong', array(
-	'url' => array(
-		'admin' => true,
-		'controller' => 'songs',
-		'action' => 'delete'
-	),
-	'onsubmit' => 'return confirm("本当に削除しますか？")',
-	'inputDefaults' => array(
-		'div' => 'form-group',
-		'label' => false,
-		'wrapInput' => false,
-		'class' => 'form-control'
-	),
-	'class' => 'form-inline'
-)); ?>
-	<?php echo $this->Form->input('id', array(
-		'placeholder' => 'ID'
-	)); ?>
-	<?php echo $this->Form->submit('Delete', array(
-		'div' => 'form-group',
-		'class' => 'btn btn-danger'
-	)); ?>
-<?php echo $this->Form->end(); ?>

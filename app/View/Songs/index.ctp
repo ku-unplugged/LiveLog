@@ -57,7 +57,13 @@ $this->assign('title', 'Song Search');
 			<?php foreach($songs as $song): ?>
 			<tr>
 				<?php if (isset($auth) && $auth['admin'] === true): ?>
-				<td><?php echo h($song['Song']['id']); ?></td>
+				<td>
+					<?php echo $this->Html->link($song['Song']['id'], array(
+						'admin' => true,
+						'action' => 'edit',
+						$song['Song']['id']
+					)); ?>
+				</td>
 				<?php endif; ?>
 				<td><?php echo $this->element('time', array('date' => $song['Live']['date'])) ?></td>
 				<td><?php echo $this->Html->link($song['Live']['name'], '/lives/detail/' . $song['Live']['id']); ?></td>
