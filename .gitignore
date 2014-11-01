@@ -9,7 +9,7 @@
 /build
 /dist
 /tags
-/sql
+/backup
 *.mo
 
 # IDE and editor specific files #
