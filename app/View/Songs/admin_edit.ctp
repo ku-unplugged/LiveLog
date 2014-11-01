@@ -39,13 +39,7 @@ $this->assign('title', 'Edit or Delete Song');
 <div class="page-header">
 	<h1>Delete Song</h1>
 </div>
-<?php echo $this->Form->create('Song', array(
-	'action' => 'delete',
-	'onsubmit' => 'return confirm("本当に削除しますか？")'
-)); ?>
-	<?php echo $this->Form->hidden('id'); ?>
-	<?php echo $this->Form->submit('Delete', array(
-		'div' => 'form-group',
-		'class' => 'btn btn-danger'
-	)); ?>
-<?php echo $this->Form->end(); ?>
+<?php echo $this->Form->postButton('Delete',
+	array('action' => 'delete', $this->request->pass[0]),
+	array('class' => 'btn btn-danger')
+); ?>

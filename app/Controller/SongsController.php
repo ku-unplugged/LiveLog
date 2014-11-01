@@ -78,12 +78,13 @@ class SongsController extends AppController {
 		$this->set('lives', $lives);
 	}
 
-	public function admin_delete() {
+	public function admin_delete($id = null) {
+		$this->Song->id = $id;
+		if (!$this->Song->exists()) {
+			throw new NotFoundException('不正なIDです');
+		}
+		$this->request->allowMethod('post', 'delete');
 		if ($this->request->is(array('post', 'delete'))) {
-			$this->Song->id = (int)$this->request->data['Song']['id'];
-			if (!$this->Song->exists()) {
-				throw new NotFoundException('不正なIDです');
-			}
 			if ($this->Song->delete()) {
 				$this->Session->setFlash('<strong>削除しました。</strong>', 'alert', array(
 					'plugin' => 'BoostCake',
