@@ -42,12 +42,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->script('analytics');
 	?>
 	<style>
-		body { padding-top: 70px; }
 		.navbar-form.navbar-right:last-child { margin-right: 0; }
 	</style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
