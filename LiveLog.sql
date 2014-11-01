@@ -1,5 +1,5 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET time_zone = "+09:00";
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -53,6 +53,8 @@ CREATE TABLE `members_songs` (
   `member_id` int(10) unsigned NOT NULL,
   `instrument` varchar(16) NOT NULL,
   `sub_instrument` varchar(16) DEFAULT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `member_song` (`song_id`,`member_id`),
   CONSTRAINT `members_songs_ibfk_1` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON UPDATE CASCADE,
