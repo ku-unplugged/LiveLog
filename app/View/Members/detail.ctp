@@ -18,6 +18,7 @@ $this->assign('title', h($member['Member']['name']));
 			<tr>
 				<th>Date</th>
 				<th>Live</th>
+				<th>#</th>
 				<th>Song</th>
 				<th>Artist</th>
 				<th>Members</th>
@@ -29,6 +30,10 @@ $this->assign('title', h($member['Member']['name']));
 			<tr>
 				<td><?php echo $this->element('time', array('date' => $song['Live']['date'])) ?></td>
 				<td><?php echo $this->Html->link($song['Live']['name'], '/lives/detail/' . $song['Live']['id']); ?></td>
+				<td>
+					<?php if (!empty($song['Song']['time'])) echo h($song['Song']['time']) . ' '; ?>
+					<?php echo h($song['Song']['order']); ?>
+				</td>
 				<td><?php echo h($song['Song']['name']); ?></td>
 				<td><?php echo h($song['Song']['artist']); ?></td>
 				<td><?php echo $this->element('members', array('members' => $song['Member'])); ?></td>
