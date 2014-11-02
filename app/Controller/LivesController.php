@@ -10,8 +10,6 @@ class LivesController extends AppController {
 
 	public function index() {
 		$lives = $this->Live->find('all');
-
-		// データを渡してindexビューを表示
 		$this->set('lives', $lives);
 	}
 
@@ -19,22 +17,18 @@ class LivesController extends AppController {
 		if (!$this->Live->exists($id)) {
 			throw new NotFoundException('不正なライブIDです');
 		}
-
-		// $live_idが一致するライブの曲を取得
 		$options = array(
 			'conditions' => array('Song.live_id' => $id),
 			'order' => array('Song.time', 'Song.order')
 		);
 		$songs = $this->Song->find('all', $options);
-
-		// データを渡してdetailビューを表示
 		$this->set('songs', $songs);
 	}
 
 	public function admin_add() {
 		if ($this->request->is('post')) {
-			$data = $this->request->data;
-			if ($this->Live->save($data)) {
+			$this->Live->create();
+			if ($this->Live->save($this->request->data)) {
 				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Live->id . '）', 'alert', array(
 					'plugin' => 'BoostCake',
 					'class' => 'alert-success'

@@ -10,8 +10,10 @@ class Song extends AppModel {
 	public $hasAndBelongsToMany = array('Member');
 
 	public $filterArgs = array(
-		'sname' => array('type' => 'like', 'field' => 'name'),
-		'artist' => array('type' => 'like', 'field' => 'artist')
+		'keyword' => array(
+			'type' => 'like',
+			'field' => array('Song.name', 'Song.artist')
+		)
 	);
 
 	public $validate = array(

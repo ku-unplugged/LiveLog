@@ -27,14 +27,10 @@ class SongsController extends AppController {
 	}
 
 	public function admin_add() {
-		$members = $this->Member->find('list', array('order' => array('Member.year DESC', 'Member.furigana')));
-		$lives = $this->Live->find('list');
-		$this->set('members', $members);
-		$this->set('lives', $lives);
 		if ($this->request->is('post')) {
-			$data = $this->request->data;
+			// そのままではメンバーを追加できないのでMembersSongモデルをhasManyする
 			$this->Song->bindModel(array('hasMany' => array('MembersSong')));
-			if ($this->Song->saveAssociated($data)) {
+			if ($this->Song->saveAssociated($this->request->data)) {
 				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Song->id . '）', 'alert', array(
 					'plugin' => 'BoostCake',
 					'class' => 'alert-success'
@@ -47,6 +43,10 @@ class SongsController extends AppController {
 				));
 			}
 		}
+		$members = $this->Member->find('list', array('order' => array('Member.year DESC', 'Member.furigana')));
+		$lives = $this->Live->find('list');
+		$this->set('members', $members);
+		$this->set('lives', $lives);
 	}
 
 	public function admin_add_nf() {
@@ -78,12 +78,13 @@ class SongsController extends AppController {
 		$this->set('lives', $lives);
 	}
 
-	public function admin_delete() {
+	public function admin_delete($id = null) {
+		$this->Song->id = $id;
+		if (!$this->Song->exists()) {
+			throw new NotFoundException('不正なIDです');
+		}
+		$this->request->allowMethod('post', 'delete');
 		if ($this->request->is(array('post', 'delete'))) {
-			$this->Song->id = (int)$this->request->data['Song']['id'];
-			if (!$this->Song->exists()) {
-				throw new NotFoundException('不正なIDです');
-			}
 			if ($this->Song->delete()) {
 				$this->Session->setFlash('<strong>削除しました。</strong>', 'alert', array(
 					'plugin' => 'BoostCake',

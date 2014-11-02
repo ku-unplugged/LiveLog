@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'Confirmation of membership');
+$this->assign('title', 'Confirm Membership');
 ?>
 <div class="page-header">
-	<h1>Confirmation of Membership</h1>
+	<h1>Confirm Membership</h1>
 </div>
 <p>
 	ユーザ登録は，京大アンプラグドのライブに出演し，すでにLiveLogに名前が登録されている人のみ行えます。<br>
@@ -20,13 +20,16 @@ $this->assign('title', 'Confirmation of membership');
 	'class' => 'well form-horizontal'
 )); ?>
 	<?php echo $this->Form->input('year', array(
-		'placeholder' => '入部年度（例: 2014）'
+		'placeholder' => '入部年度（例: 2014）',
+		'requied'
 	)); ?>
 	<?php echo $this->Form->input('last_name', array(
-		'placeholder' => '苗字（例: 京大）'
+		'placeholder' => '苗字（例: 京大）',
+		'requied'
 	)); ?>
 	<?php echo $this->Form->input('first_name', array(
-		'placeholder' => '名前（例: アンプラ太郎）'
+		'placeholder' => '名前（例: アンプラ太郎）',
+		'requied'
 	)); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('Confirm', array(

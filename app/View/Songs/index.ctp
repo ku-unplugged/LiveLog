@@ -4,7 +4,7 @@ $this->assign('title', 'Song Search');
 <div class="page-header">
 	<h1>Song Search</h1>
 </div>
-<?php echo $this->Form->create('Song', array(
+<?php echo $this->Form->create('Search', array(
 	'url' => array(
 		'controller' => 'songs',
 		'action' => 'index'
@@ -16,19 +16,18 @@ $this->assign('title', 'Song Search');
 		'wrapInput' => false,
 		'class' => 'form-control'
 	),
-	'class' => 'form-inline well'
+	'class' => 'form-inline'
 )); ?>
-	<?php echo $this->Form->input('sname', array('placeholder' => 'Song')); ?>
-	<?php echo $this->Form->input('artist', array(
-		'placeholder' => 'Artist',
-		'required' => false
+	<?php echo $this->Form->input('keyword', array(
+		'placeholder' => '曲名・アーティスト名',
+		'value' => isset($this->request->query['keyword']) ? $this->request->query['keyword'] : ''
 	)); ?>
-	<?php echo $this->Form->submit('Search', array(
+	<?php echo $this->Form->button('<span class="glyphicon glyphicon-search"></span>', array(
 		'div' => 'form-group',
 		'class' => 'btn btn-default'
 	)); ?>
 <?php echo $this->Form->end(); ?>
-
+<hr>
 <?php if (empty($songs)): ?>
 <div class="alert alert-warning" role="alert">検索結果が見つかりませんでした。</div>
 <?php else: ?>
@@ -46,9 +45,9 @@ $this->assign('title', 'Song Search');
 				<th>Artist</th>
 				<th>Members</th>
 				<?php if(isset($auth)): ?>
-				<th>Video</th>
+				<th><span class="glyphicon glyphicon-play-circle"></span></th>
 				<?php if ($auth['admin'] === true): ?>
-				<th>Edit</th>
+				<th><span class="glyphicon glyphicon-edit"></span></th>
 				<?php endif; ?>
 				<?php endif; ?>
 			</tr>
@@ -68,18 +67,18 @@ $this->assign('title', 'Song Search');
 				<td><?php echo h($song['Song']['artist']); ?></td>
 				<td><?php echo $this->element('members', array('members' => $song['Member'])); ?></td>
 				<?php if(isset($auth)): ?>
-				<td class="text-center">
+				<td>
 					<?php if (!empty($song['Song']['url'])) {
 						echo $this->Html->link('<span class="glyphicon glyphicon-play-circle"></span>', $song['Song']['url'], array('escape' => false, 'target' => '_blank'));
 					} ?>
 				</td>
 				<?php if ($auth['admin'] === true): ?>
 				<td>
-					<?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array(
-						'admin' => true,
-						'action' => 'edit',
-						$song['Song']['id']
-					), array('escape' => false)); ?>
+					<?php echo $this->Html->link('
+						<span class="glyphicon glyphicon-edit"></span>',
+						array('admin' => true, 'action' => 'edit', $song['Song']['id']),
+						array('escape' => false)
+					); ?>
 				</td>
 				<?php endif; ?>
 				<?php endif; ?>

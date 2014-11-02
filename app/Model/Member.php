@@ -9,7 +9,7 @@ class Member extends AppModel {
 
 	public $displayField = 'name';
 
-	public $order = 'Member.furigana';
+	public $order = array('Member.year DESC', 'Member.furigana');
 
 	public $validate = array(
 		'email' => array(
@@ -34,6 +34,7 @@ class Member extends AppModel {
 		)
 	);
 
+	// 保存前にパスワードをハッシュ化
 	public function beforeSave($options = array()) {
 		if (isset($this->data[$this->alias]['password'])) {
 			$passwordHasher = new SimplePasswordHasher();

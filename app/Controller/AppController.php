@@ -43,10 +43,10 @@ class AppController extends Controller {
             'authenticate' => array(
                 'Form' => array(
                     'userModel' =>'Member',
-                    'fields' => array('username' => 'email')
+                    'fields' => array('username' => 'email') // ユーザネームはMemberモデルのemailフィールドを使う
                 )
             ),
-            'authorize' => array('Controller'),
+            'authorize' => array('Controller'), // isAuthorizedメソッドを使うのに必要
             'flash' => array(
                 'element' => 'alert',
                 'key' => 'auth',
@@ -67,20 +67,18 @@ class AppController extends Controller {
     );
 
     public function beforeFilter() {
+        // ログイン情報をビューに渡す
         $this->set('auth', $this->Auth->user());
     }
 
     public function isAuthorized($user = null) {
-        // 登録済みユーザなら誰でも公開 function にアクセス可能
         if (empty($this->request->params['admin'])) {
             return true;
         }
-
-        // adminユーザだけが管理 functions にアクセス可能
+        // adminユーザだけがadminルーティング以下にアクセス可能
         if (isset($this->request->params['admin'])) {
             return (bool)($user['admin'] === true);
         }
-
         // デフォルトは拒否
         return false;
     }

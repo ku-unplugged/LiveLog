@@ -15,7 +15,7 @@ $this->assign('title', 'Add Live');
 	),
 	'class' => 'well form-horizontal'
 )); ?>
-	<?php echo $this->Form->input('text', array(
+	<?php echo $this->Form->input('_date', array(
 		'label' => 'Date',
 		'placeholder' => '例: 2014-06-13（区切りはハイフンで1桁の際は頭に0を足す）',
 		'name' => 'data[Live][date]'
