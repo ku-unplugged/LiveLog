@@ -44,9 +44,11 @@ $this->assign('title', h($songs[0]['Live']['name_year']));
 				<th>Song</th>
 				<th>Artist</th>
 				<th>Members</th>
+				<?php if(isset($auth)): ?>
 				<th><span class="glyphicon glyphicon-play-circle"></span></th>
 				<?php if ($auth['admin'] === true): ?>
 				<th><span class="glyphicon glyphicon-edit"></span></th>
+				<?php endif; ?>
 				<?php endif; ?>
 			</tr>
 		</thead>
@@ -58,6 +60,7 @@ $this->assign('title', h($songs[0]['Live']['name_year']));
 				<td><?php echo h($song['Song']['name']); ?></td>
 				<td><?php echo h($song['Song']['artist']); ?></td>
 				<td><?php echo $this->element('members', array('members' => $song['Member'])); ?></td>
+				<?php if(isset($auth)): ?>
 				<td>
 					<?php if (!empty($song['Song']['url'])) {
 						echo $this->Html->link('<span class="glyphicon glyphicon-play-circle"></span>',
@@ -74,6 +77,7 @@ $this->assign('title', h($songs[0]['Live']['name_year']));
 						array('escape' => false)
 					); ?>
 				</td>
+				<?php endif; ?>
 				<?php endif; ?>
 			</tr>
 			<?php endforeach; ?>
