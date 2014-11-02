@@ -63,7 +63,6 @@ class SongsController extends AppController {
 					'plugin' => 'BoostCake',
 					'class' => 'alert-success'
 				));
-				return $this->redirect(array('admin' => false, 'action' => 'index'));
 			} else {
 				$this->Session->setFlash('<strong>更新に失敗しました。</strong>もう一度やり直してください。', 'alert', array(
 					'plugin' => 'BoostCake',
