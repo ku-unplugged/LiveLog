@@ -25,7 +25,7 @@ $this->assign('title', h($songs[0]['Live']['name_year']));
 		<?php if (isset($auth) && $auth['admin'] === true) { // 管理者ならば
 			echo $this->Html->link(
 				'<span class="glyphicon glyphicon-edit"></span>',
-				array('admin' => true, 'action' => 'edit', $song['Song']['id']),
+				array('admin' => true, 'controller' => 'songs', 'action' => 'edit', $song['Song']['id']),
 				array('escape' => false)
 			); // 編集画面へのリンクを表示
 		} ?>

@@ -49,7 +49,7 @@ $this->assign('title', h($member['Member']['name']));
 				<td>
 					<?php echo $this->Html->link(
 						'<span class="glyphicon glyphicon-edit"></span>',
-						array('admin' => true, 'action' => 'edit', $song['Song']['id']),
+						array('admin' => true, 'controller' => 'songs', 'action' => 'edit', $song['Song']['id']),
 						array('escape' => false)
 					); ?>
 				</td>
