@@ -18,7 +18,10 @@ $this->assign('title', 'Song Search');
 	),
 	'class' => 'form-inline'
 )); ?>
-	<?php echo $this->Form->input('keyword', array('placeholder' => '曲名・アーティスト名')); ?>
+	<?php echo $this->Form->input('keyword', array(
+		'placeholder' => '曲名・アーティスト名',
+		'value' => isset($this->request->query['keyword']) ? $this->request->query['keyword'] : ''
+	)); ?>
 	<?php echo $this->Form->button('<span class="glyphicon glyphicon-search"></span>', array(
 		'div' => 'form-group',
 		'class' => 'btn btn-default'

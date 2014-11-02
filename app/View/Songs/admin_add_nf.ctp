@@ -73,7 +73,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	</div>
 <?php echo $this->Form->end(); ?>
 <script>
-	var options = $('#SongMembers').contents();
+	var options = $('#MembersSong0MemberId').contents();
 	var i = 0;
 	$('#addMemberBtn').click(function() {
 		i++;
@@ -91,7 +91,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	});
 </script>
 <script>
-	$(document).ready(function() { $("#SongMembers").select2({
+	$(document).ready(function() { $("#MembersSong0MemberId").select2({
 		minimumInputLength: 1
 	}); });
 </script>

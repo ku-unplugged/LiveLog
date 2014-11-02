@@ -47,7 +47,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 			'wrapInput' => 'col col-sm-2',
 			'placeholder' => 'サブ楽器（例: Cho）'
 		)); ?>
-		<?php echo $this->Form->input('MembersSmembers.0.member_id', array(
+		<?php echo $this->Form->input('MembersSong.0.member_id', array(
 			'label' => false,
 			'div' => false,
 			'wrapInput' => 'col col-sm-6',
@@ -67,7 +67,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	</div>
 <?php echo $this->Form->end(); ?>
 <script>
-	var options = $('#SongMembers').contents();
+	var options = $('#MembersSong0MemberId').contents();
 	var i = 0;
 	$('#addMemberBtn').click(function() {
 		i++;
@@ -85,7 +85,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	});
 </script>
 <script>
-	$(document).ready(function() { $("#SongMembers").select2({
+	$(document).ready(function() { $("#MembersSong0MemberId").select2({
 		minimumInputLength: 1
 	}); });
 </script>

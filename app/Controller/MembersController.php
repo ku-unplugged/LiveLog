@@ -145,7 +145,7 @@ class MembersController extends AppController {
 
 	public function admin_add() {
 		if ($this->request->is('post')) {
-			$this->Live->create();
+			$this->Member->create();
 			if ($this->Member->save($this->request->data)) {
 				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Member->id . '）', 'alert', array(
 					'plugin' => 'BoostCake',
