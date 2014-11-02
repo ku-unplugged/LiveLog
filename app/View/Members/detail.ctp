@@ -16,7 +16,6 @@ $this->assign('title', h($member['Member']['name']));
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Date</th>
 				<th>Live</th>
 				<th>#</th>
 				<th>Song</th>
@@ -31,8 +30,7 @@ $this->assign('title', h($member['Member']['name']));
 		<tbody>
 			<?php foreach($songs as $song): ?>
 			<tr>
-				<td><?php echo $this->element('time', array('date' => $song['Live']['date'])) ?></td>
-				<td><?php echo $this->Html->link($song['Live']['name'], '/lives/detail/' . $song['Live']['id']); ?></td>
+				<td><?php echo $this->Html->link($song['Live']['name_year'], '/lives/detail/' . $song['Live']['id']); ?></td>
 				<td>
 					<?php if (!empty($song['Song']['time'])):?>
 						<time datetime="<?php echo h($song['Song']['time']); ?>"><?php echo date('H:i', strtotime($song['Song']['time'])); ?></time>

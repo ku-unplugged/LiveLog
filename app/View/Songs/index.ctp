@@ -38,8 +38,7 @@ $this->assign('title', 'Song Search');
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th><?php echo $this->Paginator->sort('Live.date', 'Date'); ?></th>
-				<th>Live</th>
+				<th><?php echo $this->Paginator->sort('Live.date', 'Live'); ?></th>
 				<th>#</th>
 				<th>Song</th>
 				<th>Artist</th>
@@ -55,8 +54,7 @@ $this->assign('title', 'Song Search');
 		<tbody>
 			<?php foreach($songs as $song): ?>
 			<tr>
-				<td><?php echo $this->element('time', array('date' => $song['Live']['date'])) ?></td>
-				<td><?php echo $this->Html->link($song['Live']['name'], '/lives/detail/' . $song['Live']['id']); ?></td>
+				<td><?php echo $this->Html->link($song['Live']['name_year'], '/lives/detail/' . $song['Live']['id']); ?></td>
 				<td>
 					<?php if (!empty($song['Song']['time'])):?>
 						<time datetime="<?php echo h($song['Song']['time']); ?>"><?php echo date('H:i', strtotime($song['Song']['time'])); ?></time>
