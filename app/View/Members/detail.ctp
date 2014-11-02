@@ -42,7 +42,11 @@ $this->assign('title', h($member['Member']['name']));
 				<td><?php echo $this->element('members', array('members' => $song['Member'])); ?></td>
 				<td>
 					<?php if (!empty($song['Song']['url'])) {
-						echo $this->Html->link('<span class="glyphicon glyphicon-play-circle"></span>', $song['Song']['url'], array('escape' => false, 'target' => '_blank'));
+						echo $this->Html->link(
+							'<span class="glyphicon glyphicon-play-circle"></span>',
+							$song['Song']['url'],
+							array('escape' => false, 'target' => '_blank')
+						);
 					} ?>
 				</td>
 				<?php if ($auth['admin'] === true): ?>

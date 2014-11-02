@@ -45,6 +45,9 @@ $this->assign('title', h($songs[0]['Live']['name_year']));
 				<th>Artist</th>
 				<th>Members</th>
 				<th><span class="glyphicon glyphicon-play-circle"></span></th>
+				<?php if ($auth['admin'] === true): ?>
+				<th><span class="glyphicon glyphicon-edit"></span></th>
+				<?php endif; ?>
 			</tr>
 		</thead>
 		<tbody>
@@ -63,6 +66,15 @@ $this->assign('title', h($songs[0]['Live']['name_year']));
 						);
 					} ?>
 				</td>
+				<?php if ($auth['admin'] === true): ?>
+				<td>
+					<?php echo $this->Html->link(
+						'<span class="glyphicon glyphicon-edit"></span>',
+						array('admin' => true, 'controller' => 'songs', 'action' => 'edit', $song['Song']['id']),
+						array('escape' => false)
+					); ?>
+				</td>
+				<?php endif; ?>
 			</tr>
 			<?php endforeach; ?>
 		</tbody>

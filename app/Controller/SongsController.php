@@ -96,11 +96,7 @@ class SongsController extends AppController {
 				));
 			}
 		}
-		return $this->redirect(array(
-			'admin' => false,
-			'controller' => 'songs',
-			'action' => 'index'
-		));
+		return $this->redirect(array('admin' => false, 'action' => 'index'));
 	}
 
 }
