@@ -39,7 +39,9 @@ $this->assign('title', 'Song Search');
 		<thead>
 			<tr>
 				<th><?php echo $this->Paginator->sort('Live.date', 'Live'); ?></th>
+				<?php if (date('n') === '11'): // NF期のみ曲順を表示 ?>
 				<th>#</th>
+				<?php endif; ?>
 				<th>Song</th>
 				<th>Artist</th>
 				<th>Members</th>
@@ -55,12 +57,14 @@ $this->assign('title', 'Song Search');
 			<?php foreach($songs as $song): ?>
 			<tr>
 				<td><?php echo $this->Html->link($song['Live']['name_year'], '/lives/detail/' . $song['Live']['id']); ?></td>
+				<?php if (date('n') === '11'): // NF期のみ曲順を表示 ?>
 				<td>
 					<?php if (!empty($song['Song']['time'])):?>
 						<time datetime="<?php echo h($song['Song']['time']); ?>"><?php echo date('H:i', strtotime($song['Song']['time'])); ?></time>
 					<?php endif; ?>
 					<?php echo h($song['Song']['order']); ?>
 				</td>
+				<?php endif; ?>
 				<td><?php echo h($song['Song']['name']); ?></td>
 				<td><?php echo h($song['Song']['artist']); ?></td>
 				<td><?php echo $this->element('members', array('members' => $song['Member'])); ?></td>
