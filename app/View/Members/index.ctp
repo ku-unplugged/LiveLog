@@ -14,7 +14,7 @@ $this->assign('title', 'Members');
 		<h2><?php echo h($year); ?></h2>
 		<ol>
 <?php foreach ($members as $member) : ?>
-<?php if ($year !== (int)$member['Member']['year']): $year--; $i++; // 入部年度異なればdiv.col-sm-3を閉じて新たな入部年度を表示 ?>
+<?php if ($year !== (int)$member['Member']['year']): $year = (int)$member['Member']['year']; $i++; // 入部年度異なればdiv.col-sm-3を閉じて新たな入部年度を表示 ?>
 		</ol>
 	</div>
 <?php if ($i % 4 === 0): // 4年毎にdiv.rowを閉じる ?>
@@ -30,6 +30,7 @@ $this->assign('title', 'Members');
 					empty($member['Member']['nickname']) ? h($member['Member']['name']) : h($member['Member']['nickname']),
 					'/members/detail/' . $member['Member']['id']
 				); ?>
+				<?php if (!empty($member['Member']['email']) && $member['Member']['admin'] === true) echo '*'; ?>
 			</li>
 <?php endforeach; ?>
 		</ol>

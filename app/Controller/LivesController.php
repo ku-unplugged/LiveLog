@@ -27,7 +27,6 @@ class LivesController extends AppController {
 
 	public function admin_add() {
 		if ($this->request->is('post')) {
-			$this->Live->create();
 			if ($this->Live->save($this->request->data)) {
 				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Live->id . '）', 'alert', array(
 					'plugin' => 'BoostCake',

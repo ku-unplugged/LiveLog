@@ -138,20 +138,23 @@ class MembersController extends AppController {
 				));
 			}
 		} else { // Post あるいは Put でなければ
-			$options = array('conditions' => array('Member.id' => $id));
+			$options = array('conditions' => array('Member.id' => $id), 'fields' => array('Member.email', 'Member.nickname'));
 			$this->request->data = $this->Member->find('first', $options);
 		}
 	}
 
+	public function edit_password($id = null) {
+		$this->edit($id);
+	}
+
 	public function admin_add() {
 		if ($this->request->is('post')) {
-			$this->Member->create();
 			if ($this->Member->save($this->request->data)) {
 				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Member->id . '）', 'alert', array(
 					'plugin' => 'BoostCake',
 					'class' => 'alert-success'
 				));
-				$this->Member->data = array(); // 各input要素のvalueをリセット
+				$this->request->data = array(); // 各input要素のvalueをリセット
 			} else {
 				$this->Session->setFlash('<strong>追加に失敗しました。</strong>もう一度やり直してください。', 'alert', array(
 					'plugin' => 'BoostCake',
@@ -163,7 +166,7 @@ class MembersController extends AppController {
 
 	public function isAuthorized($user = null) {
 		// 表示名編集画面は認証IDとメンバーIDが一致した時のみ閲覧可
-		if ($this->action === 'edit') {
+		if (in_array($this->action, array('edit', 'edit_password'))) {
 			return $this->request->pass[0] === $user['id'];
 		}
 		return parent::isAuthorized($user);
