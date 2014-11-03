@@ -1,5 +1,7 @@
 <?php
 $this->assign('title', 'Edit or Delete Song');
+$this->assign('script', $this->Html->script(array('select2.min', 'select2_locale_ja')));
+$this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 ?>
 <div class="page-header">
 	<h1>Edit Song</h1>
@@ -29,6 +31,35 @@ $this->assign('title', 'Edit or Delete Song');
 	<?php echo $this->Form->input('artist'); ?>
 	<?php echo $this->Form->input('url'); ?>
 	<?php echo $this->Form->hidden('id'); ?>
+	<?php
+	$i = 0;
+	foreach($this->request->data['MembersSong'] as $member_song) :
+	?>
+	<div class="form-group">
+		<label class="col col-sm-2 control-label">Member<?php echo $i + 1; ?></label>
+		<?php echo $this->Form->hidden('MembersSong.' . $i . '.id'); ?>
+		<?php echo $this->Form->input('MembersSong.' . $i . '.instrument', array(
+			'label' => false,
+			'div' => false,
+			'wrapInput' => 'col col-sm-2'
+		)); ?>
+		<?php echo $this->Form->input('MembersSong.' . $i . '.sub_instrument', array(
+			'label' => false,
+			'div' => false,
+			'wrapInput' => 'col col-sm-2'
+		)); ?>
+		<?php echo $this->Form->input('MembersSong.' . $i . '.member_id', array(
+			'label' => false,
+			'div' => false,
+			'class' => 'slect2',
+			'wrapInput' => 'col col-sm-6',
+			'class' => 'form-control'
+		)); ?>
+	</div>
+	<?php
+	$i++;
+	endforeach;
+	?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('Update', array(
 			'div' => 'col col-sm-10 col-sm-offset-2',
@@ -36,6 +67,11 @@ $this->assign('title', 'Edit or Delete Song');
 		)); ?>
 	</div>
 <?php echo $this->Form->end(); ?>
+<script>
+	$(document).ready(function() { $(".select2").select2({
+		minimumInputLength: 1
+	}); });
+</script>
 <div class="page-header">
 	<h1>Delete Song</h1>
 </div>

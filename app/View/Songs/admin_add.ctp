@@ -32,7 +32,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	<?php echo $this->Form->input('url', array(
 		'placeholder' => '動画URL（例: https://www.youtube.com/watch?v=w24A2eesrUA）'
 	)); ?>
-	<div id="member0" class="form-group">
+	<div class="form-group">
 		<label class="col col-sm-2 control-label">Member1</label>
 		<?php echo $this->Form->input('MembersSong.0.instrument', array(
 			'label' => false,

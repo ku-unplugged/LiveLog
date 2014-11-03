@@ -57,8 +57,10 @@ class SongsController extends AppController {
 		if (!$this->Song->exists($id)) {
 			throw new NotFoundException(__('Invalid category'));
 		}
+		$this->Song->unbindModel(array('hasAndBelongsToMany' => array('Member')));
+		$this->Song->bindModel(array('hasMany' => array('MembersSong')));
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Song->save($this->request->data)) {
+			if ($this->Song->saveAssociated($this->request->data)) {
 				$this->Session->setFlash('<strong>更新しました。</strong>', 'alert', array(
 					'plugin' => 'BoostCake',
 					'class' => 'alert-success'
@@ -73,7 +75,9 @@ class SongsController extends AppController {
 			$options = array('conditions' => array('Song.id' => $id));
 			$this->request->data = $this->Song->find('first', $options);
 		}
+		$members = $this->Member->find('list', array('order' => array('Member.year DESC', 'Member.furigana')));
 		$lives = $this->Live->find('list');
+		$this->set('members', $members);
 		$this->set('lives', $lives);
 	}
 
