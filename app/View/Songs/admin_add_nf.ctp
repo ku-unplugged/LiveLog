@@ -38,7 +38,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	<?php echo $this->Form->input('artist', array(
 		'placeholder' => 'アーティスト名（例: Unpluggeders）'
 	)); ?>
-	<div id="member0" class="form-group">
+	<div class="form-group">
 		<label class="col col-sm-2 control-label">Member1</label>
 		<?php echo $this->Form->input('MembersSong.0.instrument', array(
 			'label' => false,

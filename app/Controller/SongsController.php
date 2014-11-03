@@ -55,10 +55,10 @@ class SongsController extends AppController {
 
 	public function admin_edit($id = null) {
 		if (!$this->Song->exists($id)) {
-			throw new NotFoundException(__('Invalid category'));
+			throw new NotFoundException(__('不正なソングIDです。'));
 		}
 		$this->Song->unbindModel(array('hasAndBelongsToMany' => array('Member')));
-		$this->Song->bindModel(array('hasMany' => array('MembersSong')));
+		$this->Song->bindModel(array('hasMany' => array('MembersSong')), false);
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Song->saveAssociated($this->request->data)) {
 				$this->Session->setFlash('<strong>更新しました。</strong>', 'alert', array(
@@ -79,6 +79,7 @@ class SongsController extends AppController {
 		$lives = $this->Live->find('list');
 		$this->set('members', $members);
 		$this->set('lives', $lives);
+		debug($this->request->data);
 	}
 
 	public function admin_delete($id = null) {
