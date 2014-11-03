@@ -30,6 +30,7 @@ $this->assign('title', 'Members');
 					empty($member['Member']['nickname']) ? h($member['Member']['name']) : h($member['Member']['nickname']),
 					'/members/detail/' . $member['Member']['id']
 				); ?>
+				<?php if (!empty($member['Member']['email']) && $member['Member']['admin'] === true) echo '*'; ?>
 			</li>
 <?php endforeach; ?>
 		</ol>

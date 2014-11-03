@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'Edit');
+$this->assign('title', 'Edit Password');
 ?>
 <div class="page-header">
-	<h1>Edit</h1>
+	<h1>Edit Password</h1>
 </div>
 <?php echo $this->Form->create(array(
 	'inputDefaults' => array(
@@ -15,11 +15,9 @@ $this->assign('title', 'Edit');
 	),
 	'class' => 'well form-horizontal'
 )); ?>
-	<?php echo $this->Form->input('email', array(
-		'placeholder' => 'メールアドレス'
-	)); ?>
-	<?php echo $this->Form->input('nickname', array(
-		'placeholder' => '表示名'
+	<?php echo $this->Form->input('password', array(
+		'label' => 'New Password',
+		'placeholder' => '新しいパスワード'
 	)); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('Update', array(
@@ -28,6 +26,3 @@ $this->assign('title', 'Edit');
 		)); ?>
 	</div>
 <?php echo $this->Form->end(); ?>
-<p>
-	<?php echo  $this->Html->link('パスワードを変更する', '/members/edit_password/' . $auth['id']); ?>
-</p>

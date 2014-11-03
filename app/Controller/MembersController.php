@@ -138,9 +138,13 @@ class MembersController extends AppController {
 				));
 			}
 		} else { // Post あるいは Put でなければ
-			$options = array('conditions' => array('Member.id' => $id));
+			$options = array('conditions' => array('Member.id' => $id), 'fields' => array('Member.email', 'Member.nickname'));
 			$this->request->data = $this->Member->find('first', $options);
 		}
+	}
+
+	public function edit_password($id = null) {
+		$this->edit($id);
 	}
 
 	public function admin_add() {
@@ -162,7 +166,7 @@ class MembersController extends AppController {
 
 	public function isAuthorized($user = null) {
 		// 表示名編集画面は認証IDとメンバーIDが一致した時のみ閲覧可
-		if ($this->action === 'edit') {
+		if (in_array($this->action, array('edit', 'edit_password'))) {
 			return $this->request->pass[0] === $user['id'];
 		}
 		return parent::isAuthorized($user);

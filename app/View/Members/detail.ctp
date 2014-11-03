@@ -5,10 +5,14 @@ $this->assign('title', h($member['Member']['name']));
 	<h1>
 		<?php echo h($member['Member']['name']); ?>
 		<span class="small">
-		<?php if (!empty($member['Member']['nickname']))
-			echo ' - ' . h($member['Member']['nickname']); ?>
-		<?php if ($auth['id'] === $member['Member']['id'])
-			echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', '/members/edit/' . $auth['id'], array('escape' => false)); ?>
+		<?php
+		if (!empty($member['Member']['nickname'])) // ニックネームがあれば表示
+			echo ' - ' . h($member['Member']['nickname']);
+		if ($auth['id'] === $member['Member']['id'])// 自分のページなら編集可能
+			echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', '/members/edit/' . $auth['id'], array('escape' => false));
+		else if (!empty($member['Member']['email'])) // メールアドレスを表示
+			echo $this->Html->link('<span class="glyphicon glyphicon-envelope"></span>', 'mailto:' . $member['Member']['email'], array('escape' => false));
+		?>
 		</span>
 	</h1>
 </div>
@@ -35,12 +39,12 @@ $this->assign('title', h($member['Member']['name']));
 				<td><?php echo $this->Html->link($song['Live']['name_year'], '/lives/detail/' . $song['Live']['id']); ?></td>
 				<?php if (date('n') === '11'):  // NF期のみ曲順を表示 ?>
 				<td>
-					<?php if (!empty($song['Song']['time'])):?>
+					<?php if (!empty($song['Song']['time'])): ?>
 						<time datetime="<?php echo h($song['Song']['time']); ?>"><?php echo date('H:i', strtotime($song['Song']['time'])); ?></time>
 					<?php endif; ?>
 					<?php echo h($song['Song']['order']); ?>
 				</td>
-				<? endif; ?>
+				<?php endif; ?>
 				<td><?php echo h($song['Song']['name']); ?></td>
 				<td><?php echo h($song['Song']['artist']); ?></td>
 				<td><?php echo $this->element('members', array('members' => $song['Member'])); ?></td>
@@ -61,7 +65,7 @@ $this->assign('title', h($member['Member']['name']));
 						array('escape' => false)
 					); ?>
 				</td>
-				<?php endif; ?>
+			<?php endif; ?>
 			</tr>
 			<?php endforeach; ?>
 		</tbody>
