@@ -42,14 +42,12 @@ $this->assign('title', 'Statistics');
 	)); ?>
 <?php echo $this->Form->end(); ?>
 <hr>
-<div class="page-header">
-	<h2>出演数ランキング</h2>
-</div>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-3">
+		<h2>出演数</h2>
 		<table class="table table-striped">
 			<thead>
-				<th>Rank</th>
+				<th>#</th>
 				<th>Name</th>
 				<th>Sum</th>
 			</thead>
@@ -60,13 +58,18 @@ $this->assign('title', 'Statistics');
 				$sum = $mem_rank[0][0]['sum'];
 				foreach ($mem_rank as $row):
 					if ($row[0]['sum'] !== $sum) {
-						$rank++;
+						$rank = $i + 1;
 						$sum = $row[0]['sum'];
 						if ($i >= 5) break;
 					} ?>
 					<tr>
 						<td><?php echo h($rank); ?></td>
-						<td><?php echo empty($row['m']['nickname']) ? h($row[0]['name']) : h($row['m']['name']); ?></td>
+						<td>
+							<?php
+							$name = empty($row['m']['nickname']) ? h($row[0]['name']) : h($row['m']['name']);
+							echo $this->Html->link($name, '/members/detail/' . $row['m']['id']);
+							?>
+						</td>
 						<td><?php echo h($row[0]['sum']); ?></td>
 					</tr>
 				<?php
@@ -76,16 +79,13 @@ $this->assign('title', 'Statistics');
 			</tbody>
 		</table>
 	</div>
-</div>
-<div class="page-header">
-	<h2>アーティストランキング</h2>
-</div>
-<div class="row">
-	<div class="col-md-6">
+<?php if ($type !== 'm'): ?>
+	<div class="col-md-3">
+		<h2>アーティスト</h2>
 		<table class="table table-striped">
 			<thead>
-				<th>Rank</th>
-				<th>Name</th>
+				<th>#</th>
+				<th>Artist</th>
 				<th>Sum</th>
 			</thead>
 			<tbody>
@@ -95,13 +95,13 @@ $this->assign('title', 'Statistics');
 				$sum = $art_rank[0][0]['sum'];
 				foreach ($art_rank as $row):
 					if ($row[0]['sum'] !== $sum) {
-						$rank++;
+						$rank = $i +1;
 						$sum = $row[0]['sum'];
 						if ($i >= 10) break;
 					} ?>
 					<tr>
 						<td><?php echo h($rank); ?></td>
-						<td><?php echo h($row['s']['name']); ?></td>
+						<td><?php echo $this->Html->link($row['s']['name'], '/songs/?keyword=' . $row['s']['name']); ?></td>
 						<td><?php echo h($row[0]['sum']); ?></td>
 					</tr>
 				<?php
@@ -111,15 +111,33 @@ $this->assign('title', 'Statistics');
 			</tbody>
 		</table>
 	</div>
-</div>
-<div class="page-header">
-	<h2>楽器ランキング</h2>
-</div>
-<div class="row">
-	<div class="col-md-4">
+	<div class="col-md-3">
+		<h2>構成人数</h2>
 		<table class="table table-striped">
 			<thead>
-				<th>Instrument</th>
+				<th>Band</th>
+				<th>Sum</th>
+			</thead>
+			<tbody>
+				<?php foreach ($band_num as $row): ?>
+				<tr>
+					<td><?php echo h($row['band']['num']); ?>人</td>
+					<td><?php echo h($row[0]['sum']); ?></td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+		<p>
+			平均: <?php echo h($band_avg_std[0][0]['avg']); ?><br>
+			標準偏差: <?php echo h($band_avg_std[0][0]['std']); ?>
+		</p>
+	</div>
+<?php endif; ?>
+	<div class="col-md-3">
+		<h2>楽器</h2>
+		<table class="table table-striped">
+			<thead>
+				<th>Inst</th>
 				<th>Sum</th>
 			</thead>
 			<tbody>
@@ -133,29 +151,3 @@ $this->assign('title', 'Statistics');
 		</table>
 	</div>
 </div>
-<?php if ($type !== 'm'): ?>
-<div class="page-header">
-	<h2>構成人数</h2>
-</div>
-<div class="row">
-	<div class="col-md-4">
-		<table class="table table-striped">
-			<thead>
-				<th>構成人数</th>
-				<th>Sum</th>
-			</thead>
-			<tbody>
-				<?php foreach ($band_num as $row): ?>
-				<tr>
-					<td><?php echo h($row['band']['num']); ?>人</td>
-					<td><?php echo h($row[0]['sum']); ?></td>
-				</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-	</div>
-</div>
-<p>
-	平均: <?php echo h($band_avg_std[0][0]['avg']); ?> / 標準偏差: <?php echo h($band_avg_std[0][0]['std']); ?>
-</p>
-<?php endif; ?>

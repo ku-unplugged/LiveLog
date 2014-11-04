@@ -7,7 +7,9 @@ class Song extends AppModel {
 		'foreignKey' => 'live_id' // 指定しなければ life_id になる
 	));
 
-	public $hasAndBelongsToMany = array('Member');
+	public $hasAndBelongsToMany = array('Member' => array(
+		'order' => 'MembersSong.id'
+	));
 
 	public $filterArgs = array(
 		'keyword' => array(
