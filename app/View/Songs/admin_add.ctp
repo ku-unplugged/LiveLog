@@ -45,7 +45,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 			'label' => false,
 			'div' => false,
 			'wrapInput' => 'col col-sm-2',
-			'placeholder' => 'サブ楽器（例: Cho）'
+			'placeholder' => 'サブ楽器（例: Vo）'
 		)); ?>
 		<?php echo $this->Form->input('MembersSong.0.member_id', array(
 			'label' => false,

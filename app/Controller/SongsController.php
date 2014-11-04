@@ -79,7 +79,6 @@ class SongsController extends AppController {
 		$lives = $this->Live->find('list');
 		$this->set('members', $members);
 		$this->set('lives', $lives);
-		debug($this->request->data);
 	}
 
 	public function admin_delete($id = null) {
@@ -124,7 +123,7 @@ class SongsController extends AppController {
 				$csv[$i]['Song']['order'] = $data[1];
 				$csv[$i]['Song']['name'] = $data[2];
 				$csv[$i]['Song']['artist'] = $data[3];
-				$members = explode(' ', $data[4]);
+				$members = explode(',', $data[4]);
 				$j = 0;
 				foreach ($members as $member) {
 					$inst_name = explode('.', $member);
@@ -141,14 +140,14 @@ class SongsController extends AppController {
 							'conditions' => array(
 								'Member.last_name' => $name[0],
 								'Member.first_name LIKE' => $name[1].'%',
-								'Member.year <' => '2014'
+								'Member.year <' => '2013'
 							)
 						));
 					} else {
 						$member_id = $this->Member->find('first', array(
 							'conditions' => array(
 								'Member.last_name' => $inst_name[1],
-								'Member.year <' => '2014'
+								'Member.year <' => '2013'
 							)
 						));
 					}
@@ -160,21 +159,21 @@ class SongsController extends AppController {
 
 			fclose($temp);
 
-			$this->Song->bindModel(array('hasMany' => array('MembersSong')));
-			if ($this->Song->saveMany($csv, array('deep' => true))) {
-				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Song->id . '）', 'alert', array(
-					'plugin' => 'BoostCake',
-					'class' => 'alert-success'
-				));
-				$this->request->data = array();
-			} else {
-				$this->Session->setFlash('<strong>追加に失敗しました。</strong>もう一度やり直してください。', 'alert', array(
-					'plugin' => 'BoostCake',
-					'class' => 'alert-danger'
-				));
-			}
+			// $this->Song->bindModel(array('hasMany' => array('MembersSong')));
+			// if ($this->Song->saveMany($csv, array('deep' => true))) {
+			// 	$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Song->id . '）', 'alert', array(
+			// 		'plugin' => 'BoostCake',
+			// 		'class' => 'alert-success'
+			// 	));
+			// 	$this->request->data = array();
+			// } else {
+			// 	$this->Session->setFlash('<strong>追加に失敗しました。</strong>もう一度やり直してください。', 'alert', array(
+			// 		'plugin' => 'BoostCake',
+			// 		'class' => 'alert-danger'
+			// 	));
+			// }
 
-			// debug($csv);
+			debug($csv);
 		}
 		$lives = $this->Live->find('list');
 		$this->set('lives', $lives);
