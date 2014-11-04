@@ -24,7 +24,7 @@ $this->assign('title', 'Edit');
 	<div class="form-group">
 		<?php echo $this->Form->submit('Update', array(
 			'div' => 'col col-md-9 col-md-offset-3',
-			'class' => 'btn btn-default'
+			'class' => 'btn btn-warning'
 		)); ?>
 	</div>
 <?php echo $this->Form->end(); ?>
