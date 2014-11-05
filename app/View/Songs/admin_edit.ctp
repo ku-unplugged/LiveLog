@@ -51,9 +51,8 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 		<?php echo $this->Form->input('MembersSong.' . $i . '.member_id', array(
 			'label' => false,
 			'div' => false,
-			'class' => 'slect2',
 			'wrapInput' => 'col col-sm-6',
-			'class' => 'form-control'
+			'class' => 'form-control select2'
 		)); ?>
 	</div>
 	<?php

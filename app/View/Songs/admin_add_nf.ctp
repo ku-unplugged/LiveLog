@@ -6,6 +6,12 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 <div class="page-header">
 	<h1>Add NF Song</h1>
 </div>
+<p>
+	<b>楽器の入力について</b><br>
+	原則全て半角。記号がわからない時は過去の事例（Statisticsの楽器）から探す。そこになければ一般に使われている記号を参考にする。<br>
+	入力順は「Vo → Vn・Fl・Sax等メロディ楽器 → Gt → Pf → Ba → Cj → パーカス」<br>
+	同じ楽器が2つあるときはメロディとバッキングに分かれているならメロディが先で，違いがなければ名前の順。
+</p>
 <?php echo $this->Form->create(array(
 	'inputDefaults' => array(
 		'div' => 'form-group',
@@ -36,7 +42,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 		'placeholder' => '曲名（例: アンプラのテーマ）'
 	)); ?>
 	<?php echo $this->Form->input('artist', array(
-		'placeholder' => 'アーティスト名（例: Unpluggeders）'
+		'placeholder' => 'アーティスト名（例: Unpluggeders）',
 	)); ?>
 	<div class="form-group">
 		<label class="col col-sm-2 control-label">Member1</label>
