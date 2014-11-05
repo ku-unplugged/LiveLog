@@ -66,7 +66,7 @@ $this->assign('title', 'Statistics');
 						<td><?php echo h($rank); ?></td>
 						<td>
 							<?php
-							$name = empty($row['m']['nickname']) ? h($row[0]['name']) : h($row['m']['name']);
+							$name = empty($row['m']['nickname']) ? h($row[0]['name']) : h($row['m']['nickname']);
 							echo $this->Html->link($name, '/members/detail/' . $row['m']['id']);
 							?>
 						</td>

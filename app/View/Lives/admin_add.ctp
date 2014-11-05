@@ -13,7 +13,8 @@ $this->assign('title', 'Add Live');
 		'wrapInput' => 'col col-md-9',
 		'class' => 'form-control'
 	),
-	'class' => 'well form-horizontal'
+	'class' => 'well form-horizontal',
+	'onsubmit' => 'return myConfirm()'
 )); ?>
 	<?php echo $this->Form->input('_date', array(
 		'label' => 'Date',
@@ -33,3 +34,15 @@ $this->assign('title', 'Add Live');
 		)); ?>
 	</div>
 <?php echo $this->Form->end(); ?>
+<script>
+	function myConfirm() {
+		return confirm(
+			$('#LiveDate').val()
+			+ '\n'
+			+ $('#LiveName').val()
+			+ '\n@'
+			+ $('#LivePlace').val()
+			+ '\nを追加します'
+		);
+	}
+</script>

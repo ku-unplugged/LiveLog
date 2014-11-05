@@ -13,7 +13,8 @@ $this->assign('title', 'Add Member');
 		'wrapInput' => 'col col-md-9',
 		'class' => 'form-control'
 	),
-	'class' => 'well form-horizontal'
+	'class' => 'well form-horizontal',
+	'onsubmit' => 'return myConfirm()'
 )); ?>
 	<?php
 	$year = array();
@@ -45,3 +46,15 @@ $this->assign('title', 'Add Member');
 		)); ?>
 	</div>
 <?php echo $this->Form->end(); ?>
+<script>
+	function myConfirm() {
+		return confirm(
+			$('#MemberSelect').val()
+			+ '年\n'
+			+ $('#MemberLastName').val() + ' '+ $('#MemberFirstName').val()
+			+ '\n'
+			+ $('#MemberFurigana').val()
+			+ '\nを追加します'
+		);
+	}
+</script>
