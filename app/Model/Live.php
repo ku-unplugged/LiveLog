@@ -2,7 +2,7 @@
 class Live extends AppModel {
 
 	public $virtualFields = array(
-		'name_year' => 'CONCAT(Live.name, " ", DATE_FORMAT(Live.date, "%Y"))'
+		'name_year' => 'CONCAT(DATE_FORMAT(Live.date, "%Y"), " ", Live.name)'
 	);
 
 	public $displayField = 'name_year';
