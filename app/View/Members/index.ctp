@@ -17,7 +17,7 @@ $this->assign('title', 'Members');
 <?php if ($year !== (int)$member['Member']['year']) : $year = (int)$member['Member']['year']; $i++; // 入部年度異なればdiv.col-sm-3を閉じて新たな入部年度を表示 ?>
 		</ol>
 	</div>
-<?php if ($i % 4 === 0): // 4年毎にdiv.rowを閉じる ?>
+<?php if ($i % 4 === 0) : // 4年毎にdiv.rowを閉じる ?>
 </div>
 <div class="row">
 <?php endif; ?>

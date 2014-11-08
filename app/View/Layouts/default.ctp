@@ -70,19 +70,21 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				<li<?php echo $this->request->controller === 'members' ? ' class="active"' : '' ?>>
 					<?php echo $this->Html->link('Members', '/members'); ?>
 				</li>
-				<li<?php echo $this->request->controller === 'statistics' ? ' class="active"' : '' ?>>
-					<?php echo $this->Html->link('Statistics', '/statistics'); ?>
+				<li class="dropdown<?php echo $this->request->controller === 'statistics' ? ' active' : '' ?>">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Statistics <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><?php echo $this->Html->link('Live', '/statistics'); ?></li>
+						<li><?php echo $this->Html->link('Member', '/statistics/member'); ?></li>
+					</ul>
 				</li>
 	<?php if ($auth['admin'] === true): // 管理者ならば?>
 				<li<?php echo isset($this->request->params['admin']) ? ' class="active"' : '' ?>>
 					<?php echo $this->Html->link('Admin', '/pages/admin'); ?>
-	<?php endif; ?>
 				</li>
+	<?php endif; ?>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<?php echo $this->Html->link($auth['name'], '/members/detail/' . $auth['id']); ?>
-				</li>
+				<li><?php echo $this->Html->link($auth['name'], '/members/detail/' . $auth['id']); ?></li>
 				<li><?php echo $this->Html->link('Sign Out', '/members/logout'); ?></li>
 			</ul>
 <?php else: // ログインしていなければ ?>

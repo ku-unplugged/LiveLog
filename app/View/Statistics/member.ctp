@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'Statistics');
+$this->assign('title', 'Statistics:Member');
 ?>
 <div class="page-header">
-	<h1>Statistics</h1>
+	<h1>Statistics: Member</h1>
 </div>
 <?php echo $this->Form->create('Stats', array(
 	'type' => 'get',
@@ -18,26 +18,22 @@ $this->assign('title', 'Statistics');
 	$now = getdate();
 	$nendo = $now['mon'] > 3 ? $now['year'] : $now['year'] - 1;
 	$year = array();
-	for ($y = $nendo; $y >= 2011; $y--) {
+	for ($y = $nendo; $y >= 2008; $y--) {
 		$year[$y] = $y;
 	}
-	$year['all'] = '全';
 	echo $this->Form->input('select', array(
 		'options' => $year,
 		'name' => 'year',
-		'default' => isset($this->request->query['year']) ? $this->request->query['year'] : ''
+		'default' => isset($this->request->query['year']) ? $this->request->query['year'] : $auth['year']
 	));
 	?>
-	年度のライブの統計を見る
+	年度入部メンバーの統計を見る
 	<?php echo $this->Form->submit('Go', array(
 		'div' => 'form-group',
 		'class' => 'btn btn-default'
 	)); ?>
 <?php echo $this->Form->end(); ?>
 <hr>
-<p class="lead">
-	曲数: <?php echo h($song_sum); ?>
-</p>
 <div class="row">
 	<div class="col-md-3">
 		<h2>出演数</h2>
@@ -81,7 +77,6 @@ $this->assign('title', 'Statistics');
 			<thead>
 				<th>#</th>
 				<th>Artist</th>
-				<th>Sum</th>
 			</thead>
 			<tbody>
 				<?php
@@ -97,7 +92,6 @@ $this->assign('title', 'Statistics');
 					<tr>
 						<td><?php echo h($rank); ?></td>
 						<td><?php echo $this->Html->link($row['s']['name'], '/songs/?keyword=' . $row['s']['name']); ?></td>
-						<td><?php echo h($row[0]['sum']); ?></td>
 					</tr>
 				<?php
 				$i++;
@@ -105,27 +99,6 @@ $this->assign('title', 'Statistics');
 				?>
 			</tbody>
 		</table>
-	</div>
-	<div class="col-md-3">
-		<h2>構成人数</h2>
-		<table class="table table-striped">
-			<thead>
-				<th>Band</th>
-				<th>Percent</th>
-			</thead>
-			<tbody>
-				<?php foreach ($band_num as $row): ?>
-				<tr>
-					<td><?php echo h($row['band']['num']); ?>人</td>
-					<td><?php echo h($row[0]['percent']); ?>%</td>
-				</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
-		<p>
-			平均: <?php echo h($band_avg_std[0][0]['avg']); ?><br>
-			標準偏差: <?php echo h($band_avg_std[0][0]['std']); ?>
-		</p>
 	</div>
 	<div class="col-md-3">
 		<h2>楽器</h2>
