@@ -110,7 +110,7 @@ $this->assign('title', 'Statistics:Member');
 			<tbody>
 				<?php foreach ($inst_rank as $row): ?>
 				<tr>
-					<td><?php echo h($row[0]['inst']); ?></td>
+					<td><?php echo h($row['i']['inst']); ?></td>
 					<td><?php echo h($row[0]['sum']); ?></td>
 				</tr>
 				<?php endforeach; ?>

@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'Statistics');
+$this->assign('title', 'Statistics:Me');
 ?>
 <div class="page-header">
-	<h1>Statistics</h1>
+	<h1>Statistics: Me</h1>
 </div>
 <?php echo $this->Form->create('Stats', array(
 	'type' => 'get',
@@ -18,17 +18,17 @@ $this->assign('title', 'Statistics');
 	$now = getdate();
 	$nendo = $now['mon'] > 3 ? $now['year'] : $now['year'] - 1;
 	$year = array();
-	for ($y = $nendo; $y >= 2011; $y--) {
+	for ($y = $nendo; $y >= $auth['year']; $y--) {
 		$year[$y] = $y;
 	}
 	$year['all'] = '全';
 	echo $this->Form->input('select', array(
 		'options' => $year,
 		'name' => 'year',
-		'default' => isset($this->request->query['year']) ? $this->request->query['year'] : ''
+		'default' => isset($this->request->query['year']) ? $this->request->query['year'] : 'all'
 	));
 	?>
-	年度のライブの統計を見る
+	年度の自分の統計を見る
 	<?php echo $this->Form->submit('Go', array(
 		'div' => 'form-group',
 		'class' => 'btn btn-default'
@@ -40,38 +40,24 @@ $this->assign('title', 'Statistics');
 </p>
 <div class="row">
 	<div class="col-md-3">
-		<h2>出演数</h2>
+		<h2>共演数</h2>
 		<table class="table table-striped">
 			<thead>
-				<th>#</th>
 				<th>Name</th>
 				<th>Sum</th>
 			</thead>
 			<tbody>
-				<?php
-				$i = 0;
-				$rank = 1;
-				$sum = $mem_rank[0][0]['sum'];
-				foreach ($mem_rank as $row):
-					if ($row[0]['sum'] !== $sum) {
-						$rank = $i + 1;
-						$sum = $row[0]['sum'];
-						if ($i >= 10) break;
-					} ?>
-					<tr>
-						<td><?php echo h($rank); ?></td>
-						<td>
-							<?php
-							$name = empty($row['m']['nickname']) ? h($row[0]['name']) : h($row['m']['nickname']);
-							echo $this->Html->link($name, '/members/detail/' . $row['m']['id']);
-							?>
-						</td>
-						<td><?php echo h($row[0]['sum']); ?></td>
-					</tr>
-				<?php
-				$i++;
-				endforeach;
-				?>
+				<?php foreach ($mem_rank as $row) : ?>
+				<tr>
+					<td>
+						<?php
+						$name = empty($row['m']['nickname']) ? h($row[0]['name']) : h($row['m']['nickname']);
+						echo $this->Html->link($name, '/members/detail/' . $row['m']['id']);
+						?>
+					</td>
+					<td><?php echo h($row[0]['sum']); ?></td>
+				</tr>
+				<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
@@ -79,30 +65,16 @@ $this->assign('title', 'Statistics');
 		<h2>アーティスト</h2>
 		<table class="table table-striped">
 			<thead>
-				<th>#</th>
 				<th>Artist</th>
 				<th>Sum</th>
 			</thead>
 			<tbody>
-				<?php
-				$i = 0;
-				$rank = 1;
-				$sum = $art_rank[0][0]['sum'];
-				foreach ($art_rank as $row):
-					if ($row[0]['sum'] !== $sum) {
-						$rank = $i +1;
-						$sum = $row[0]['sum'];
-						if ($i >= 10) break;
-					} ?>
+				<?php foreach ($art_rank as $row) : ?>
 					<tr>
-						<td><?php echo h($rank); ?></td>
 						<td><?php echo $this->Html->link($row['s']['name'], '/songs/?keyword=' . $row['s']['name']); ?></td>
 						<td><?php echo h($row[0]['sum']); ?></td>
 					</tr>
-				<?php
-				$i++;
-				endforeach;
-				?>
+				<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>

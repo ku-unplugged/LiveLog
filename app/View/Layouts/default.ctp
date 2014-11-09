@@ -75,6 +75,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					<ul class="dropdown-menu" role="menu">
 						<li><?php echo $this->Html->link('Live', '/statistics'); ?></li>
 						<li><?php echo $this->Html->link('Member', '/statistics/member'); ?></li>
+						<li><?php echo $this->Html->link('Me', '/statistics/me'); ?></li>
 					</ul>
 				</li>
 	<?php if ($auth['admin'] === true): // 管理者ならば?>
