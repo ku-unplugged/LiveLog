@@ -73,9 +73,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				<li class="dropdown<?php echo $this->request->controller === 'statistics' ? ' active' : '' ?>">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Statistics <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><?php echo $this->Html->link('Live', '/statistics'); ?></li>
-						<li><?php echo $this->Html->link('Member', '/statistics/member'); ?></li>
-						<li><?php echo $this->Html->link('Me', '/statistics/me'); ?></li>
+						<li><?php echo $this->Html->link('年度ごと', '/statistics'); ?></li>
+						<li><?php echo $this->Html->link('回生ごと', '/statistics/member'); ?></li>
+						<li><?php echo $this->Html->link('自分', '/statistics/me'); ?></li>
 					</ul>
 				</li>
 	<?php if ($auth['admin'] === true): // 管理者ならば?>

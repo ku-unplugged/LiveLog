@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'Statistics:Me');
+$this->assign('title', 'Statistics');
 ?>
 <div class="page-header">
-	<h1>Statistics: Me</h1>
+	<h1>Statistics</h1>
 </div>
 <?php echo $this->Form->create('Stats', array(
 	'type' => 'get',
@@ -40,7 +40,7 @@ $this->assign('title', 'Statistics:Me');
 </p>
 <div class="row">
 	<div class="col-md-3">
-		<h2>共演数</h2>
+		<h2>共演数<small> - <?php echo count($mem_rank); ?>人</small></h2>
 		<table class="table table-striped">
 			<thead>
 				<th>Name</th>

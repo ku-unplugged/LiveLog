@@ -36,7 +36,8 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 		'placeholder' => 'アーティスト名（例: Unpluggeders）'
 	)); ?>
 	<?php echo $this->Form->input('url', array(
-		'placeholder' => '動画URL（例: https://www.youtube.com/watch?v=w24A2eesrUA）'
+		'placeholder' => '動画URL（例: https://www.youtube.com/watch?v=w24A2eesrUA）',
+		'maxlength' => '43'
 	)); ?>
 	<div class="form-group">
 		<label class="col col-sm-2 control-label">Member1</label>

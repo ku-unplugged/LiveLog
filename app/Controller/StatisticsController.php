@@ -31,7 +31,7 @@ class StatisticsController extends AppController {
 			WHERE l.id = s.live_id AND m.id = ms.member_id AND s.id = ms.song_id
 			%s
 			GROUP BY m.id
-			ORDER BY COUNT(*) DESC
+			ORDER BY sum DESC
 			LIMIT 20',
 			$condition
 		));
@@ -45,7 +45,7 @@ class StatisticsController extends AppController {
 			AND s.artist != ""
 			%s
 			GROUP BY s.artist
-			ORDER BY COUNT(*) DESC
+			ORDER BY sum DESC
 			LIMIT 20',
 			$condition
 		));
@@ -62,8 +62,7 @@ class StatisticsController extends AppController {
 				GROUP BY ms.song_id
 			) band
 			GROUP BY band.num',
-			$song_sum,
-			$condition
+			$song_sum, $condition
 		));
 		$band_avg_std = $this->MembersSong->query(sprintf(
 			'SELECT AVG(band.num) avg, STD(band.num) std

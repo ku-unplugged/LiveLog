@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'Statistics:Member');
+$this->assign('title', 'Statistics');
 ?>
 <div class="page-header">
-	<h1>Statistics: Member</h1>
+	<h1>Statistics</h1>
 </div>
 <?php echo $this->Form->create('Stats', array(
 	'type' => 'get',

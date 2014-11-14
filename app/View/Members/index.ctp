@@ -36,3 +36,12 @@ $this->assign('title', 'Members');
 		</ol>
 	</div>
 </div>
+<p>
+	*印が付いているメンバーはライブやメンバーの追加，曲の編集・削除を行うことができる管理者です。<br>
+	動画の削除や曲名・アーティスト名の変更は管理者までご連絡ください。<br>
+</p>
+<p>
+	その他ご意見ご要望は
+	<?php echo $this->Html->link('三吉<span class="glyphicon glyphicon-envelope"></span>', 'mailto:tmiyoshi0902@gmail.com', array('escape' => false)); ?>
+	にお願いいたします（ソースコードは<?php echo $this->Html->link('こちら', 'https://github.com/ku-unplugged/LiveLog', array('target' => '_blank')); ?>）。
+</p>

@@ -29,7 +29,9 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	<?php echo $this->Form->input('order'); ?>
 	<?php echo $this->Form->input('name'); ?>
 	<?php echo $this->Form->input('artist'); ?>
-	<?php echo $this->Form->input('url'); ?>
+	<?php echo $this->Form->input('url', array(
+		'maxlength' => '43'
+	)); ?>
 	<?php echo $this->Form->hidden('id'); ?>
 	<?php
 	$i = 0;
