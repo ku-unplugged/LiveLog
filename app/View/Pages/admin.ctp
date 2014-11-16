@@ -5,12 +5,11 @@ $this->assign('title', 'Admin');
 	<h1>Admin</h1>
 </div>
 <p>
-	過去のセットリストはいつでも追加していただいて大丈夫です。<br>
+	<?php echo $this->Html->link('過去のセットリスト', 'http://ku-unplugged.net/old/lives/live_index.html', array('target' => '_blank')); ?>はいつでも追加していただいて大丈夫です。<br>
 	ただし，曲単位ではなくライブ単位での追加をお願いします。<br>
-	URLの欄は三吉まで連絡いただければ，後で編集しておきます。
 </p>
 <p>
-	また，2011年度のNFは楽器の情報がなかったので，編成が分かる曲があれば修正をお願いします。
+	また，2011年度以前は楽器の情報がなかったので，間違いに気がついた方は修正をお願いします。
 </p>
 <ul>
 	<li class="lead">
