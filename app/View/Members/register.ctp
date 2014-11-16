@@ -8,6 +8,9 @@ $this->assign('title', 'Sign Up');
 	ようこそ！　<?php echo h($member['Member']['last_name']) . ' ' . h($member['Member']['first_name']); ?> さん<br>
 	メールアドレスとパスワードを入力して登録を完了してください。
 </p>
+<p class="text-warning">
+	※ メールアドレスはすべてのアンプラグダーに公開されます。
+</p>
 <?php echo $this->Form->create(array(
 	'inputDefaults' => array(
 		'div' => 'form-group',
