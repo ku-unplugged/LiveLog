@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'パスワードの変更');
+$this->assign('title', 'Change Password');
 ?>
 <div class="page-header">
-	<h1>パスワードの変更</h1>
+	<h1>Change Password</h1>
 </div>
 <?php echo $this->Form->create(array(
 	'inputDefaults' => array(

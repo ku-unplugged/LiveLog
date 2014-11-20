@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'メールアドレスと表示名の編集');
+$this->assign('title', 'Edit');
 ?>
 <div class="page-header">
-	<h1>メールアドレスと表示名の編集</h1>
+	<h1>Edit</h1>
 </div>
 <?php echo $this->Form->create(array(
 	'inputDefaults' => array(
