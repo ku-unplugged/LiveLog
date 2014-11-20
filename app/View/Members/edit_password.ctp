@@ -16,8 +16,7 @@ $this->assign('title', 'Change Password');
 	'class' => 'well form-horizontal'
 )); ?>
 	<?php echo $this->Form->input('password', array(
-		'label' => 'New Password',
-		'placeholder' => '新しいパスワード'
+		'label' => '新しいパスワード'
 	)); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('変更する', array(

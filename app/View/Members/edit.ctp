@@ -16,10 +16,11 @@ $this->assign('title', 'Edit');
 	'class' => 'well form-horizontal'
 )); ?>
 	<?php echo $this->Form->input('email', array(
-		'placeholder' => 'メールアドレス'
+		'label' => 'メールアドレス'
 	)); ?>
 	<?php echo $this->Form->input('nickname', array(
-		'placeholder' => '表示名'
+		'label' => '表示名',
+		'after' => '<p class="col-md-9 col-md-offset-3 help-block">同姓の人がいて紛らわしい，あだ名の方がわかりやすい，サークル外の人には名前を伏せたい，などの場合に利用してください</p>'
 	)); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('更新', array(
