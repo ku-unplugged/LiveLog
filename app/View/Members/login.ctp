@@ -16,10 +16,10 @@ $this->assign('title', 'Log In');
 	'class' => 'well form-horizontal'
 )); ?>
 	<?php echo $this->Form->input('email', array(
-		'placeholder' => 'メールアドレス'
+		'label' => 'メールアドレス'
 	)); ?>
 	<?php echo $this->Form->input('password', array(
-		'placeholder' => 'パスワード'
+		'label' => 'パスワード'
 	)); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('Log In', array(
