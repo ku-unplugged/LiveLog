@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'Sign Up');
+$this->assign('title', '新規登録');
 ?>
 <div class="page-header">
-	<h1>Sign Up</h1>
+	<h1>新規登録</h1>
 </div>
 <p>
 	ようこそ！　<?php echo h($member['Member']['last_name']) . ' ' . h($member['Member']['first_name']); ?> さん<br>
@@ -29,7 +29,7 @@ $this->assign('title', 'Sign Up');
 		'placeholder' => 'パスワード'
 	)); ?>
 	<div class="form-group">
-		<?php echo $this->Form->submit('Sign Up', array(
+		<?php echo $this->Form->submit('新規登録', array(
 			'div' => 'col col-md-9 col-md-offset-3',
 			'class' => 'btn btn-primary'
 		)); ?>

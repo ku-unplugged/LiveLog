@@ -24,28 +24,33 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	'class' => 'well form-horizontal'
 )); ?>
 	<?php echo $this->Form->input('live', array(
-		'name' => 'data[Song][live_id]'
+		'name' => 'data[Song][live_id]',
+		'label' => 'ライブ'
 	)); ?>
 	<?php
 	// ここから
 	echo $this->Form->input('nf_time', array(
 		'label' => 'Time',
 		'name' => 'data[Song][time]',
-		'placeholder' => '曲順（例: 09:30）'
+		'placeholder' => '09:30',
+		'label' => '時間'
 	));
 	// ここまでが違う
 	?>
 	<?php echo $this->Form->input('order', array(
-		'placeholder' => '曲順（例: 1）'
+		'placeholder' => '1',
+		'label' => '曲順'
 	)); ?>
 	<?php echo $this->Form->input('name', array(
-		'placeholder' => '曲名（例: アンプラのテーマ）'
+		'placeholder' => 'アンプラのテーマ',
+		'label' => '曲名'
 	)); ?>
 	<?php echo $this->Form->input('artist', array(
-		'placeholder' => 'アーティスト名（例: Unpluggeders）',
+		'placeholder' => 'Unpluggeders',
+		'label' => 'アーティスト'
 	)); ?>
 	<div class="form-group">
-		<label class="col col-sm-2 control-label">Member1</label>
+		<label class="col col-sm-2 control-label">メンバー1</label>
 		<?php echo $this->Form->input('MembersSong.0.instrument', array(
 			'label' => false,
 			'div' => false,
@@ -84,7 +89,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	$('#addMemberBtn').click(function() {
 		i++;
 		$('<div class="form-group">'
-			+ '<label class="col col-sm-2 control-label">Member' + (i + 1) + '</label>'
+			+ '<label class="col col-sm-2 control-label">メンバー' + (i + 1) + '</label>'
 			+ '<div class="col col-sm-2"><input name="data[MembersSong][' + i + '][instrument]" class="form-control" type="text" required=""></div>'
 			+ '<div class="col col-sm-2"><input name="data[MembersSong][' + i + '][sub_instrument]" class="form-control" type="text"></div>'
 			+ '<div class="col col-sm-6"><select name="data[MembersSong][' + i + '][member_id]" class="form-control"></select></div>'

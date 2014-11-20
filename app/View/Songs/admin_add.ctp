@@ -9,8 +9,8 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 <p>
 	<b>楽器の入力について</b><br>
 	記号がわからない時は過去の事例（Statisticsの楽器）から探す。そこになければ一般に使われている記号を検索する。<br>
-	入力順は「Vo → Vn・Fl・Sax等メロディ楽器 → Gt → Pf → Ba → Cj → パーカス」<br>
-	同じ楽器が2つあるときはメロディとバッキングに分かれているならメロディが先で，違いがなければ名前の順。
+	入力順は「Vo → Vn・Fl・Sax等リード楽器 → Gt → Pf → Ba → Cj → パーカス」<br>
+	同じ楽器が2つあるときはリードとバッキングに分かれているならリードが先で，違いがなければ名前の順。
 </p>
 <?php echo $this->Form->create(array(
 	'inputDefaults' => array(
@@ -24,23 +24,28 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	'class' => 'well form-horizontal'
 )); ?>
 	<?php echo $this->Form->input('live', array(
-		'name' => 'data[Song][live_id]'
+		'name' => 'data[Song][live_id]',
+		'label' => 'ライブ'
 	)); ?>
 	<?php echo $this->Form->input('order', array(
-		'placeholder' => '曲順（例: 1）'
+		'placeholder' => '1',
+		'label' => '曲順'
 	)); ?>
 	<?php echo $this->Form->input('name', array(
-		'placeholder' => '曲名（例: アンプラのテーマ）'
+		'placeholder' => 'アンプラのテーマ',
+		'label' => '曲名'
 	)); ?>
 	<?php echo $this->Form->input('artist', array(
-		'placeholder' => 'アーティスト名（例: Unpluggeders）'
+		'placeholder' => 'Unpluggeders',
+		'label' => 'アーティスト'
 	)); ?>
 	<?php echo $this->Form->input('url', array(
-		'placeholder' => '動画URL（例: https://www.youtube.com/watch?v=w24A2eesrUA）',
-		'maxlength' => '43'
+		'placeholder' => 'https://www.youtube.com/watch?v=w24A2eesrUA',
+		'maxlength' => '43',
+		'lable' => '動画URL'
 	)); ?>
 	<div class="form-group">
-		<label class="col col-sm-2 control-label">Member1</label>
+		<label class="col col-sm-2 control-label">メンバー1</label>
 		<?php echo $this->Form->input('MembersSong.0.instrument', array(
 			'label' => false,
 			'div' => false,
@@ -79,7 +84,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	$('#addMemberBtn').click(function() {
 		i++;
 		$('<div class="form-group">'
-			+ '<label class="col col-sm-2 control-label">Member' + (i + 1) + '</label>'
+			+ '<label class="col col-sm-2 control-label">メンバー' + (i + 1) + '</label>'
 			+ '<div class="col col-sm-2"><input name="data[MembersSong][' + i + '][instrument]" class="form-control" type="text" required=""></div>'
 			+ '<div class="col col-sm-2"><input name="data[MembersSong][' + i + '][sub_instrument]" class="form-control" type="text"></div>'
 			+ '<div class="col col-sm-6"><select name="data[MembersSong][' + i + '][member_id]" class="form-control"></select></div>'

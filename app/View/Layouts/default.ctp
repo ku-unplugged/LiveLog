@@ -86,12 +86,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><?php echo $this->Html->link($auth['name'], '/members/detail/' . $auth['id']); ?></li>
-				<li><?php echo $this->Html->link('Sign Out', '/members/logout'); ?></li>
+				<li><?php echo $this->Html->link('Log Out', '/members/logout'); ?></li>
 			</ul>
 <?php else: // ログインしていなければ ?>
 			</ul>
 			<?php echo $this->Html->link(
-				'<button type="button" class="btn btn-info navbar-btn navbar-right">Sign Up</button>',
+				'<button type="button" class="btn btn-info navbar-btn navbar-right">新規登録</button>',
 				'/members/confirm',
 				array('escape' => false)
 			); ?>
@@ -114,7 +114,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->Form->input('password', array(
 				'placeholder' => 'password'
 			)); ?>
-			<?php echo $this->Form->submit('Sign In', array(
+			<?php echo $this->Form->submit('Log In', array(
 				'div' => false,
 				'class' => 'btn btn-default'
 			)); ?>

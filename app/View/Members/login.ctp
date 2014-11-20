@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'Sign In');
+$this->assign('title', 'Log In');
 ?>
 <div class="page-header">
-	<h1>Sign In</h1>
+	<h1>Log In</h1>
 </div>
 <?php echo $this->Form->create(array(
 	'inputDefaults' => array(
@@ -22,7 +22,7 @@ $this->assign('title', 'Sign In');
 		'placeholder' => 'パスワード'
 	)); ?>
 	<div class="form-group">
-		<?php echo $this->Form->submit('Sign In', array(
+		<?php echo $this->Form->submit('Log In', array(
 			'div' => 'col col-md-9 col-md-offset-3',
 			'class' => 'btn btn-primary'
 		)); ?>

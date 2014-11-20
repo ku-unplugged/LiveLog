@@ -19,18 +19,26 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 )); ?>
 	<?php echo $this->Form->input('live', array(
 		'name' => 'data[Song][live_id]',
-		'default' => $this->request->data['Song']['live_id']
+		'default' => $this->request->data['Song']['live_id'],
+		'label' => 'ライブ'
 	)); ?>
 	<?php echo $this->Form->input('nf_time', array(
-		'label' => 'Time (NF)',
+		'label' => '時間（NFのみ）',
 		'name' => 'data[Song][time]',
 		'value' => $this->request->data['Song']['time']
 	)); ?>
-	<?php echo $this->Form->input('order'); ?>
-	<?php echo $this->Form->input('name'); ?>
-	<?php echo $this->Form->input('artist'); ?>
+	<?php echo $this->Form->input('order', array(
+		'label' => '曲順'
+	)); ?>
+	<?php echo $this->Form->input('name', array(
+		'label' => '曲名'
+	)); ?>
+	<?php echo $this->Form->input('artist', array(
+		'label' => 'アーティスト'
+	)); ?>
 	<?php echo $this->Form->input('url', array(
-		'maxlength' => '43'
+		'maxlength' => '43',
+		'label' => '動画URL'
 	)); ?>
 	<?php echo $this->Form->hidden('id'); ?>
 	<?php
@@ -38,7 +46,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	foreach($this->request->data['MembersSong'] as $member_song) :
 	?>
 	<div class="form-group">
-		<label class="col col-sm-2 control-label">Member<?php echo $i + 1; ?></label>
+		<label class="col col-sm-2 control-label">メンバー<?php echo $i + 1; ?></label>
 		<?php echo $this->Form->hidden('MembersSong.' . $i . '.id'); ?>
 		<?php echo $this->Form->input('MembersSong.' . $i . '.instrument', array(
 			'label' => false,

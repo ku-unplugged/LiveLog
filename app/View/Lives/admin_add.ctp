@@ -18,14 +18,16 @@ $this->assign('title', 'Add Live');
 )); ?>
 	<?php echo $this->Form->input('_date', array(
 		'label' => 'Date',
-		'placeholder' => '例: 2014-06-13（区切りはハイフンで1桁の際は頭に0を足す）',
+		'placeholder' => '2014-06-13',
+		'after' => '<p class="col-md-9 col-md-offset-3 help-block">区切りはハイフンで，月日が1桁の場合は0を付ける</p>',
 		'name' => 'data[Live][date]'
 	)); ?>
 	<?php echo $this->Form->input('name', array(
-		'placeholder' => '例: 6月ライブ（数字・アルファベットは半角）'
+		'placeholder' => '6月ライブ'
 	)); ?>
 	<?php echo $this->Form->input('place', array(
-		'placeholder' => '例: 4共21（数字は半角）'
+		'placeholder' => '4共21',
+		'after' => '<p class="col-md-9 col-md-offset-3 help-block">英数字は原則半角</p>'
 	)); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('Add Live', array(

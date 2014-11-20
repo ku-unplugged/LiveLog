@@ -28,16 +28,17 @@ $this->assign('title', 'Add Member');
 	));
 	?>
 	<?php echo $this->Form->input('last_name', array(
-		'label' => '苗字',
-		'placeholder' => '例: 京大'
+		'label' => '姓',
+		'placeholder' => '京大'
 	)); ?>
 	<?php echo $this->Form->input('first_name', array(
-		'label' => '名前',
-		'placeholder' => '例: アンプラ太郎'
+		'label' => '名',
+		'placeholder' => 'アンプラ太郎'
 	)); ?>
 	<?php echo $this->Form->input('furigana', array(
 		'label' => 'ふりがな',
-		'placeholder' => '例: きょうだいあんぷらたろう（スペースなし）'
+		'after' => '<p class="col-md-9 col-md-offset-3 help-block">姓名の間はスペースなしで詰める</p>',
+		'placeholder' => 'きょうだいあんぷらたろう'
 	)); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('Add Member', array(
