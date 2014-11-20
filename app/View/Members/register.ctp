@@ -20,12 +20,12 @@ $this->assign('title', '新規登録');
 	'class' => 'well form-horizontal'
 )); ?>
 	<?php echo $this->Form->input('email', array(
-		'placeholder' => 'メールアドレス',
+		'label' => 'メールアドレス',
 		'after' => '<p class="col-md-9 col-md-offset-3 help-block">メールアドレスはすべてのアンプラグダーに公開されます</p>',
 
 	)); ?>
 	<?php echo $this->Form->input('password', array(
-		'placeholder' => 'パスワード'
+		'label' => 'パスワード'
 	)); ?>
 	<div class="form-group">
 		<?php echo $this->Form->submit('登録する', array(

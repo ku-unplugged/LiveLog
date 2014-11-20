@@ -27,7 +27,7 @@ $this->assign('title', 'Home');
 		<li>曲名・アーティスト名から過去の演奏を検索する「<?php echo $this->Html->link('Song Search', '/songs'); ?>」</li>
 		<li>ライブごとのセットリストを表示する「<?php echo $this->Html->link('Live List', '/lives'); ?>」</li>
 	</ul>
-	を利用することができます。
+	を利用できます。
 </p>
 <p>
 	また，ユーザ登録をすると，
@@ -36,7 +36,7 @@ $this->assign('title', 'Home');
 		<li>京大アンプラグドに関する様々な統計を見ることができる「Statistics」</li>
 		<li>各ライブの演奏動画</li>
 	</ul>
-	を利用することができるようになります。
+	を利用できるようになります。
 </p>
 <?php else : ?>
 </div>
