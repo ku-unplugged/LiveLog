@@ -5,8 +5,8 @@ $this->assign('title', '会員資格の確認');
 	<h1>会員資格の確認</h1>
 </div>
 <p>
-	ユーザ登録は，京大アンプラグドのライブに出演し，すでにLiveLogに名前が登録されている人のみ行えます。<br>
-	下記フォームより会員資格を確認して下さい。
+	ユーザ登録は，LiveLogに出演者として名前が存在する人のみ行えます。<br>
+	以下のフォームより会員資格を確認して下さい。
 </p>
 <?php echo $this->Form->create('Confirm', array(
 	'inputDefaults' => array(

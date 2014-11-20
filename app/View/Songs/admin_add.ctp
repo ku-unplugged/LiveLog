@@ -42,7 +42,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	<?php echo $this->Form->input('url', array(
 		'placeholder' => 'https://www.youtube.com/watch?v=w24A2eesrUA',
 		'maxlength' => '43',
-		'lable' => '動画URL'
+		'label' => '動画URL'
 	)); ?>
 	<div class="form-group">
 		<label class="col col-sm-2 control-label">メンバー1</label>
