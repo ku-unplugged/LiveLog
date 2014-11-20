@@ -30,9 +30,9 @@ $this->assign('title', 'Add Live');
 		'after' => '<p class="col-md-9 col-md-offset-3 help-block">英数字は原則半角</p>'
 	)); ?>
 	<div class="form-group">
-		<?php echo $this->Form->submit('追加する', array(
+		<?php echo $this->Form->submit('Add', array(
 			'div' => 'col col-md-9 col-md-offset-3',
-			'class' => 'btn btn-default'
+			'class' => 'btn btn-primary'
 		)); ?>
 	</div>
 <?php echo $this->Form->end(); ?>

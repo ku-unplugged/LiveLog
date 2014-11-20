@@ -72,7 +72,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 		</div>
 	</div>
 	<div class="form-group">
-		<?php echo $this->Form->submit('追加する', array(
+		<?php echo $this->Form->submit('Add', array(
 			'div' => 'col col-sm-10 col-sm-offset-2',
 			'class' => 'btn btn-default'
 		)); ?>

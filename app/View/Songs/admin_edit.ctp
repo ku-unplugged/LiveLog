@@ -70,7 +70,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 	endforeach;
 	?>
 	<div class="form-group">
-		<?php echo $this->Form->submit('更新', array(
+		<?php echo $this->Form->submit('Update', array(
 			'div' => 'col col-sm-10 col-sm-offset-2',
 			'class' => 'btn btn-warning'
 		)); ?>
@@ -84,7 +84,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 <div class="page-header">
 	<h1>Delete Song</h1>
 </div>
-<?php echo $this->Form->postButton('削除する',
+<?php echo $this->Form->postButton('Delete',
 	array('action' => 'delete', $this->request->pass[0]),
 	array('class' => 'btn btn-danger')
 ); ?>

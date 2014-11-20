@@ -20,9 +20,9 @@ $this->assign('title', 'パスワードの変更');
 		'placeholder' => '新しいパスワード'
 	)); ?>
 	<div class="form-group">
-		<?php echo $this->Form->submit('更新', array(
+		<?php echo $this->Form->submit('変更する', array(
 			'div' => 'col col-md-9 col-md-offset-3',
-			'class' => 'btn btn-warning'
+			'class' => 'btn btn-danger'
 		)); ?>
 	</div>
 <?php echo $this->Form->end(); ?>
