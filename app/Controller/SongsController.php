@@ -84,7 +84,7 @@ class SongsController extends AppController {
 	public function admin_delete($id = null) {
 		$this->Song->id = $id;
 		if (!$this->Song->exists()) {
-			throw new NotFoundException('不正なIDです');
+			throw new NotFoundException('不正なソングIDです');
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->request->is(array('post', 'delete'))) {

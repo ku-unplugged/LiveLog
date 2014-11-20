@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'Edit');
+$this->assign('title', 'メールアドレスと表示名の編集');
 ?>
 <div class="page-header">
-	<h1>Edit</h1>
+	<h1>メールアドレスと表示名の編集</h1>
 </div>
 <?php echo $this->Form->create(array(
 	'inputDefaults' => array(
@@ -22,7 +22,7 @@ $this->assign('title', 'Edit');
 		'placeholder' => '表示名'
 	)); ?>
 	<div class="form-group">
-		<?php echo $this->Form->submit('Update', array(
+		<?php echo $this->Form->submit('更新', array(
 			'div' => 'col col-md-9 col-md-offset-3',
 			'class' => 'btn btn-warning'
 		)); ?>

@@ -81,13 +81,13 @@ class MembersController extends AppController {
 			if ($this->request->is('post')) {
 				$this->request->data['Member']['id'] = $member['Member']['id'];
 				if ($this->Member->save($this->request->data)) {
-					$this->Session->setFlash('<strong>登録が完了しました。</strong>メールアドレスとパスワードを入力してサインインしてください。', 'alert', array(
+					$this->Session->setFlash('<strong>登録が完了しました。</strong>メールアドレスとパスワードを入力してログインしてください。', 'alert', array(
 						'plugin' => 'BoostCake',
 						'class' => 'alert-success'
 					));
 					$this->redirect(array('action' => 'login'));
 				} else {
-					$this->Session->setFlash('<strong>登録に失敗しました。</strong>恐れ入りますがもう一度やり直してください。', 'alert', array(
+					$this->Session->setFlash('<strong>登録に失敗しました。</strong>恐れ入りますが，もう一度やり直してください。', 'alert', array(
 						'plugin' => 'BoostCake',
 						'class' => 'alert-danger'
 					));

@@ -1,8 +1,8 @@
 <?php
-$this->assign('title', 'Edit Password');
+$this->assign('title', 'パスワードの変更');
 ?>
 <div class="page-header">
-	<h1>Edit Password</h1>
+	<h1>パスワードの変更</h1>
 </div>
 <?php echo $this->Form->create(array(
 	'inputDefaults' => array(
@@ -20,7 +20,7 @@ $this->assign('title', 'Edit Password');
 		'placeholder' => '新しいパスワード'
 	)); ?>
 	<div class="form-group">
-		<?php echo $this->Form->submit('Update', array(
+		<?php echo $this->Form->submit('更新', array(
 			'div' => 'col col-md-9 col-md-offset-3',
 			'class' => 'btn btn-warning'
 		)); ?>
