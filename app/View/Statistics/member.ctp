@@ -2,7 +2,7 @@
 $this->assign('title', 'Statistics');
 ?>
 <div class="page-header">
-	<h1>Statistics</h1>
+	<h1>Statistics<small> - 回生ごと</small></h1>
 </div>
 <?php echo $this->Form->create('Stats', array(
 	'type' => 'get',

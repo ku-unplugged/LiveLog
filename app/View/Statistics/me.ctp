@@ -2,7 +2,7 @@
 $this->assign('title', 'Statistics');
 ?>
 <div class="page-header">
-	<h1>Statistics</h1>
+	<h1>Statistics<small> - 自分</small></h1>
 </div>
 <?php echo $this->Form->create('Stats', array(
 	'type' => 'get',
@@ -40,7 +40,7 @@ $this->assign('title', 'Statistics');
 </p>
 <div class="row">
 	<div class="col-md-3">
-		<h2>共演数<small> - <?php echo count($mem_rank); ?>人</small></h2>
+		<h2>共演数</h2>
 		<table class="table table-striped">
 			<thead>
 				<th>Name</th>
@@ -60,6 +60,7 @@ $this->assign('title', 'Statistics');
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+		<p>計 <?php echo count($mem_rank); ?> 人</p>
 	</div>
 	<div class="col-md-3">
 		<h2>アーティスト</h2>
