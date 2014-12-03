@@ -80,7 +80,15 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				</li>
 	<?php if ($auth['admin'] === true): // 管理者ならば?>
 				<li<?php echo isset($this->request->params['admin']) ? ' class="active"' : '' ?>>
-					<?php echo $this->Html->link('Admin', '/pages/admin'); ?>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li class="dropdown-header">Add</li>
+						<li><?php echo $this->Html->link('Member', '/admin/members/add'); ?></li>
+						<li><?php echo $this->Html->link('Live', '/admin/lives/add'); ?></li>
+						<li><?php echo $this->Html->link('Song', '/admin/songs/add'); ?></li>
+						<li><?php echo $this->Html->link('Song (NF)', '/admin/songs/add_nf'); ?></li>
+						<li><?php echo $this->Html->link('Admin', '/admin/members/edit_admin'); ?></li>
+					</ul>
 				</li>
 	<?php endif; ?>
 			</ul>
