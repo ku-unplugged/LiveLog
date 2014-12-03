@@ -16,17 +16,6 @@ $this->assign('title', 'Add Member');
 	'class' => 'well form-horizontal',
 	'onsubmit' => 'return myConfirm()'
 )); ?>
-	<?php
-	$year = array();
-	for ($y = (int)date('Y'); $y >= 1993; $y--) {
-		$year[(string)$y] = $y;
-	}
-	echo $this->Form->input('select', array(
-		'label' => '入部年度',
-		'options' => $year,
-		'name' => 'data[Member][year]'
-	));
-	?>
 	<?php echo $this->Form->input('last_name', array(
 		'label' => '姓',
 		'placeholder' => '京大'
@@ -50,9 +39,7 @@ $this->assign('title', 'Add Member');
 <script>
 	function myConfirm() {
 		return confirm(
-			$('#MemberSelect').val()
-			+ '年\n'
-			+ $('#MemberLastName').val() + ' '+ $('#MemberFirstName').val()
+			$('#MemberLastName').val() + ' '+ $('#MemberFirstName').val()
 			+ '\n'
 			+ $('#MemberFurigana').val()
 			+ '\nを追加します'

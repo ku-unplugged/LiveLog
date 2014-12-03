@@ -149,6 +149,9 @@ class MembersController extends AppController {
 
 	public function admin_add() {
 		if ($this->request->is('post')) {
+			$date = getdate();
+			$year = $date['mon'] > 3 ? $date['year'] : $date['year'] - 1;
+			$this->request->data['Member']['year'] = $year;
 			if ($this->Member->save($this->request->data)) {
 				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Member->id . '）', 'alert', array(
 					'plugin' => 'BoostCake',
