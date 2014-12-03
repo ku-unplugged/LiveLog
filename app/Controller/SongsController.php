@@ -44,7 +44,7 @@ class SongsController extends AppController {
 			}
 		}
 		$members = $this->Member->find('list', array('order' => array('Member.year DESC', 'Member.furigana')));
-		$lives = $this->Live->find('list');
+		$lives = $this->Live->find('list', array('limit' => 10));
 		$this->set('members', $members);
 		$this->set('lives', $lives);
 	}
