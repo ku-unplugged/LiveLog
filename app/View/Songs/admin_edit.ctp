@@ -40,7 +40,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 		'maxlength' => '43',
 		'label' => '動画URL'
 	)); ?>
-	<?php echo $this->Form->hidden('id'); ?>
+	<?php echo $this->Form->input('id'); ?>
 	<?php
 	$i = 0;
 	foreach($this->request->data['MembersSong'] as $member_song) :

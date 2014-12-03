@@ -164,6 +164,24 @@ class MembersController extends AppController {
 		}
 	}
 
+	public function admin_edit_admin() {
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Member->exists($this->request->data['Member']['id']) && $this->Member->save($this->request->data)) {
+				$member = $this->Member->findById($this->Member->id);
+				$this->Session->setFlash('<strong>' . $member['Member']['last_name'] . ' ' . $member['Member']['first_name'] . '</strong> を管理者に設定しました。', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-success'
+				));
+				$this->request->data = array(); // 各input要素のvalueをリセット
+			} else {
+				$this->Session->setFlash('<strong>管理者の設定に失敗しました。</strong>もう一度やり直してください。', 'alert', array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-danger'
+				));
+			}
+		}
+	}
+
 	public function isAuthorized($user = null) {
 		// 表示名編集画面は認証IDとメンバーIDが一致した時のみ閲覧可
 		if (in_array($this->action, array('edit', 'edit_password'))) {
