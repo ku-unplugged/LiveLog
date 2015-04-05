@@ -1,7 +1,7 @@
 .navbar-form.navbar-right:last-child { margin-right: 0; }
 td .list-inline { margin-bottom: 0; }
 .navbar-brand {
-	font-family: "Century Gothic";
+	font-family: "Century Gothic","Helvetica Neue",Helvetica,Arial,sans-serif;
 	letter-spacing: 1px;
 }
 
