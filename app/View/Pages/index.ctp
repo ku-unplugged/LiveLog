@@ -1,8 +1,10 @@
 <?php
 $this->assign('title', 'Home');
 ?>
-<div class="jumbotron">
-	<h1>LiveLog</h1>
+<div class="text-center jumbotron">
+	<h1>
+		<img src="img/logo.png" alt="LiveLog" class="center-block img-responsive">
+	</h1>
 	<p>
 		京都大学を中心に活動するアコースティック軽音サークル<br>
 		「<?php echo $this->Html->link('京大アンプラグド', 'http://ku-unplugged.net/', array('target' => '_blank')); ?>」のセットリスト検索システムです。
