@@ -40,7 +40,7 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 		'label' => 'アーティスト'
 	)); ?>
 	<?php echo $this->Form->input('url', array(
-		'placeholder' => 'https://www.youtube.com/watch?v=w24A2eesrUA'
+		'placeholder' => 'https://www.youtube.com/watch?v=w24A2eesrUA',
 		'label' => '動画URL'
 	)); ?>
 	<div class="form-group">

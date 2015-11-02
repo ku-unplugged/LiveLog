@@ -37,7 +37,6 @@ $this->assign('css', $this->Html->css(array('select2', 'select2-bootstrap')));
 		'label' => 'アーティスト'
 	)); ?>
 	<?php echo $this->Form->input('url', array(
-		'maxlength' => '43',
 		'label' => '動画URL'
 	)); ?>
 	<?php echo $this->Form->input('id'); ?>
