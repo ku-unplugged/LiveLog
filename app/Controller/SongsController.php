@@ -131,8 +131,8 @@ class SongsController extends AppController {
 					} else {
 						$csv[$i]['MembersSong'][$j]['instrument'] = $inst_name[0];
 					}
-					if (strpos($inst_name[1], '-')) {
-						$name = explode('-', $inst_name[1]);
+					if (strpos($inst_name[1], '(')) {
+						$name = explode('(', $inst_name[1]);
 						$member_id = $this->Member->find('first', array(
 							'conditions' => array(
 								'Member.last_name' => $name[0],
@@ -154,6 +154,7 @@ class SongsController extends AppController {
 				$i++;
 			}
 			fclose($temp);
+			debug($csv);
 			$this->Song->bindModel(array('hasMany' => array('MembersSong')));
 			if ($this->Song->saveMany($csv, array('deep' => true))) {
 				$this->Session->setFlash('<strong>追加しました。</strong>（ID: ' . $this->Song->id . '）', 'alert', array(
@@ -167,7 +168,6 @@ class SongsController extends AppController {
 					'class' => 'alert-danger'
 				));
 			}
-			// debug($csv);
 		}
 		$lives = $this->Live->find('list');
 		$this->set('lives', $lives);
